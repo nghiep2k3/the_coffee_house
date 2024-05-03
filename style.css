@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+
 * {
     padding: 0;
     margin: 0;
@@ -8,16 +9,20 @@
     scroll-padding-top: 4rem;
     text-decoration: none;
 }
+
 img {
     width: 100%;
 }
+
 html {
     scroll-behavior: smooth;
 }
+
 a {
     text-decoration: none;
     cursor: pointer;
 }
+
 header {
     position: fixed;
     width: 100%;
@@ -31,25 +36,30 @@ header {
     transition: 0.5s linear;
     background-color: #000;
 }
+
 .logo img {
     width: 100%;
 }
+
 .nav-bar {
     display: flex;
 }
-.nav-bar>li>a{
+
+.nav-bar>li>a {
     padding: 8px 17px;
     color: #fff;
     font-size: 1rem;
     text-transform: uppercase;
     font-weight: 500;
 }
+
 .nav-bar a:hover {
     background-color: #fff;
     color: #000;
     border-radius: 0.2rem;
     transition: 0.3s all;
 }
+
 .header-icon {
     font-size: 22px;
     cursor: pointer;
@@ -57,14 +67,17 @@ header {
     display: flex;
     column-gap: 0.8rem;
 }
+
 .header-i {
     color: #fff;
 }
+
 .header-icon :hover {
     padding: 10px;
     color: #000;
     background-color: #fff;
 }
+
 .login {
     padding: 3px;
 }
@@ -106,6 +119,7 @@ header {
     font-size: 30px;
     color: #fff;
 }
+
 .modal-heading-icon {
     margin-right: 16px;
 }
@@ -154,7 +168,7 @@ header {
     text-transform: uppercase;
     padding: 18px;
     cursor: pointer;
-}   
+}
 
 #buy-ticket:hover {
     background: #d38338ad;
@@ -166,16 +180,27 @@ header {
     text-align: right;
 }
 
-.modal-footer a{
-   color: #2196F3;
+.modal-footer a {
+    color: #2196F3;
 }
+
 @keyframes modalFadeIn {
     from {
         opacity: 0;
         transform: translateY(-160px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+.left_drink {
+    width: 570px;
+    height: 370.5px;
+}
+
+.left_drink img {
+    width: 100%;
 }
