@@ -17,10 +17,10 @@
             <input type="text" placeholder="Enter your user" name="email">
             <p>Mật khẩu</p>
             <input type="password" placeholder="Enter your password" name="password">
-            <!-- <input type="submit" name="login" value="Đăng nhập"> -->
-            <button class="button" name="login">
+            <input type="submit" name="login" value="Đăng nhập">
+            <!-- <button class="button" name="login">
                 <span class="button-content">Đăng nhập</span>
-            </button>
+            </button> -->
             <a href="#">Quên mật khẩu?</a>
         </form>
     </div>
