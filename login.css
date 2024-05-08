@@ -8,11 +8,25 @@ body {
 .form_box {
     border-radius: 2.5em;
     position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 550px;
+    height: 480px;
+    padding: 60px 30px;
+    box-sizing: border-box;
+    background: rgba(83, 80, 77,0.6);
+    padding-bottom: 5%;
+    padding-top: 50px;
+}
+.form_register_box {
+    border-radius: 2.5em;
+    position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
     width: 550px;
-    height: 450px;
+    height: 590px;
     padding: 60px 30px;
     box-sizing: border-box;
     background: rgba(83, 80, 77,0.6);
@@ -46,7 +60,7 @@ h2 {
     height: 40px;
     font-size: 16px;
 }
-.form_box input[type="submit"] {
+/* .form_box input[type="submit"] {
     border: none;
     outline: none;
     font-size: 16px;
@@ -60,7 +74,7 @@ h2 {
 .form_box input[type="submit"]:hover {
     background: rgba(226, 187, 110, 0.6);
     color: #fff;
-}
+} */
 .form_box a {
     color: #fff;
     font-size: 14px;
