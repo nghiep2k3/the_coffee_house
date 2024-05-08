@@ -75,7 +75,6 @@ header {
 }
 
 .header-icon :hover {
-    padding: 10px;
     color: #000;
     background-color: #fff;
 }

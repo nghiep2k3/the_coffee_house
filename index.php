@@ -23,7 +23,6 @@
             <li><a href="">Menu</a></li>
             <li><a href="">Giới thiệu</a></li>
             <li><a href="">Shop</a></li>
-
         </ul>
         <div class="header-icon">
             <i class="header-i ti-shopping-cart"></i>
@@ -31,13 +30,7 @@
             <i class="header-i ti-menu-alt"></i>
         </div>
         <div class="form">
-            <form action="index.php" method="post">
-                <?php
-                include "login.php";
-                if (isset($_SESSION['mySession'])) {
-                    echo '<div>Chào mừng, ' . $_SESSION['mySession'] . '</div>';
-                }
-                ?>
+            <form action="index.php" method="POST">
                 <button class="login" type="submit" name="switch-login">Đăng nhập</button>
                 <a href="logout.php">
                     <button class="login" type="submit" name="switch-logout">/Đăng ký</button>
@@ -46,11 +39,13 @@
         </div>
     </header>
     <div class="main">
-
     </div>
     <?php
+    include "login.php";
+    echo $test;
     if (isset($_POST['switch-login'])) {
-        header('location:form_login.php');
+        header('Location: form_login.php');
+        exit;
     }
     ?>
 </body>
