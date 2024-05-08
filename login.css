@@ -40,18 +40,22 @@ h2 {
     color: #fff;
     text-align: center;
 }
-.form_box p {
+.form_box p,
+.form_register_box p{
     margin: 0;
     padding: 0;
     font-weight: bold;
     color: #fff;
 }
-.form_box input {
+.form_box input,
+.form_register_box input{
     width: 100%;
     margin-bottom: 25px;
 }
 .form_box input[type="text"],
-.form_box input[type="password"] {
+.form_box input[type="password"],
+.form_register_box input[type="text"],
+.form_register_box input[type="password"] {
     border: none;
     outline: none;
     border-bottom: 1px solid #fff;
@@ -60,7 +64,8 @@ h2 {
     height: 40px;
     font-size: 16px;
 }
-.form_box input[type="submit"] {
+.form_box input[type="submit"],
+.form_register_box input[type="submit"]  {
     border: none;
     outline: none;
     font-size: 16px;
@@ -71,11 +76,13 @@ h2 {
     height: 50px;
     margin-top: 20px;
 }
-.form_box input[type="submit"]:hover {
+.form_box input[type="submit"]:hover,
+.form_register_box input[type="submit"]:hover {
     background: rgba(226, 187, 110, 0.6);
     color: #fff;
 }
-.form_box a {
+.form_box a,
+.form_register_box a {
     color: #fff;
     font-size: 14px;
     font-weight: bold;
