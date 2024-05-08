@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+
 * {
     padding: 0;
     margin: 0;
@@ -8,16 +9,20 @@
     scroll-padding-top: 4rem;
     text-decoration: none;
 }
+
 img {
     width: 100%;
 }
+
 html {
     scroll-behavior: smooth;
 }
+
 a {
     text-decoration: none;
     cursor: pointer;
 }
+
 header {
     height: 84px;
     position: fixed;
@@ -32,9 +37,11 @@ header {
     transition: 0.5s linear;
     background: rgba(0, 0, 0, 0.5);
 }
+
 .logo img {
     width: 100%;
 }
+
 .nav-bar {
     display: flex;
     margin: 0;
@@ -47,6 +54,7 @@ header {
     text-transform: uppercase;
     font-weight: 500;
 }
+
 .nav-bar a:hover {
     color: #ec9d48;
     border-radius: 0.2rem;
@@ -88,10 +96,12 @@ header {
     display: flex;
     column-gap: 0.8rem;
 }
+
 .header-i {
     color: #fff;
     padding: 10px;
 }
+
 .header-icon :hover {
     color: #ec9d48;
 }
