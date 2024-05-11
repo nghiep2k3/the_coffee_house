@@ -25,9 +25,9 @@
             <input type="submit" name="sigup" value="Đăng ký">
         </form>
     </div>
-            <?php
-                include "register.php";
-            ?>
+    <?php
+    include "register.php";
+    ?>
 </body>
 
 </html>

@@ -67,7 +67,7 @@
             <i class="ti-angle-left icon-slider-left"></i>
             <i class="ti-angle-right icon-slider-right"></i>
             <div class="text-content">
-                <h2 class="text-heading">a place 
+                <h2 class="text-heading">a place
                     of tranquility</h2>
                 <div class="text-description">Lorem ipsum dolor sit amet consectetur adipisi</div>
                 <button class="button read-more">
@@ -129,6 +129,9 @@
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
         </script>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+        </script>
 </body>
 
 </html>
