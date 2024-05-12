@@ -172,14 +172,12 @@ header {
     margin: 0;
     padding: 0;
     position: relative;
-    background: url(./assest/img/loginimg.jpg);
-    background-size: cover;
 }
 
 .text-content {
     position: absolute;
-    top: 35%;
-    left: 110px;
+    top: 20%;
+    left: 200px;
     text-align: center;
 }
 
