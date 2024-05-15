@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
-
 * {
     padding: 0;
     margin: 0;
@@ -165,56 +164,4 @@ header {
 
 .read-more {
     margin-top: 20px;
-}
-
-.slider {
-    height: 800px;
-    margin: 0;
-    padding: 0;
-    position: relative;
-}
-
-.text-content {
-    position: absolute;
-    top: 20%;
-    left: 200px;
-    text-align: center;
-}
-
-.slider .text-heading {
-    color: #fff;
-    text-transform: uppercase;
-    font-weight: bold;
-    font-size: 100px;
-    max-width: 500px;
-}
-
-.slider .text-description {
-    text-align: left;
-    color: #fff;
-    font-size: 20px;
-    margin-top: 10px;
-    font-style: oblique;
-}
-
-.slider .icon-slider-left {
-    position: absolute;
-    top: 50%;
-    color: #fff;
-    font-size: 35px;
-    left: 0;
-}
-
-.slider .icon-slider-right {
-    right: 0;
-    position: absolute;
-    top: 50%;
-    color: #fff;
-    font-size: 35px;
-}
-
-.slider .icon-slider-left:hover,
-.slider .icon-slider-right:hover {
-    color: #000;
-    cursor: pointer;
 }
