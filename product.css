@@ -86,6 +86,7 @@ a {
   }
   
   .status-product::before {
+    z-index: 2;
     content: 'Best Seller';
     position: absolute;
     width: 150%;

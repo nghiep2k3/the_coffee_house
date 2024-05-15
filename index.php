@@ -24,7 +24,7 @@
             <ul class="nav-bar">
                 <li><a href="">Trang chủ</a></li>
                 <li><a href="">Đặt chỗ</a></li>
-                <li><a class="sub" href="">Menu
+                <li><a class="sub" href="./danhmuc.php">Menu
                         <ul class="subnav">
                             <li><a href="">Tất cả</a></li>
                             <li><a href="">Cà phê</a></li>
