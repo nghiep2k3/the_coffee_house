@@ -43,7 +43,7 @@
                 <i class="header-i ti-search"></i>
                 <i class="header-i ti-menu-alt"></i>
             </div>
-            <div class="form">
+            <div class="form" id="login-form">
                 <form action="index.php" method="post">
                     <button class=" button login" type="submit" name="switch-login">
                         <span class="button-content">Đăng nhập</span>
@@ -61,6 +61,9 @@
                         header('location: ./view/form_register.php');
                     }
                 ?>
+            </div>
+            <div id="user-greeting" style="display: none;">
+                <span>Welcome, <span id="username-display"></span></span>
             </div>
         </header>
         <!-- <div class="slider">
@@ -129,9 +132,20 @@
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
         </script>
     </div>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var username = localStorage.getItem("username");
+        if (username) {
+            document.getElementById("login-form").style.display = "none";
+            document.getElementById("username-display").textContent = username;
+            document.getElementById("user-greeting").style.display = "block";
+            document.getElementById("user-greeting").style.color = "white";
+        }
+    });
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
-        </script>
+    </script>
 </body>
 
 </html>

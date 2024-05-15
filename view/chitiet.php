@@ -26,15 +26,22 @@ require_once "../controller/product_detail.php";
 
 <body>
     <h1>Chi tiết sản phẩm</h1>
-    <h1>Đây là id số: <?= $product['order_id'] ?></h1>
+    <h1>Đây là id số: <?= $product['id'] ?></h1>
+    <h1>Giá:</h1>
+    <p><?= $product['unit_price'] ?>K</p>
+    <h1>Số lượng: </h1>
+    <p><?= $product['quantity'] ?></p>
+    <form action="giohang.php?action=add" method="POST">
+        <h1>Nhập số lượng mua</h1>
+        <input type="number" value="1" name="quantity[<?=$product['id']?>]" id="">
+        <input type="submit" name="" id="" value="Mua sản phẩm">
+    </form>
     <h1>Hình ảnh sản phẩm</h1>
     <div class="figure">
         <img src="<?= $product['src_img'] ?>" alt="Lỗi">
     </div>
     <h1>Mô tả sản phẩm:</h1>
     <p><?= $product['description'] ?></p>
-    <h1>Giá:</h1>
-    <p><?= $product['unit_price'] ?></p>
 
 </body>
 
