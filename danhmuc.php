@@ -20,7 +20,7 @@
     $html_dm = '';
     foreach ($dsdm as $dm) {
         extract($dm);
-        $link = 'danhmuc.php&iddm='.$id;
+        $link = 'danhmuc.php?iddm='.$id;
         $html_dm.='<li><a class="infor-extra" href="'.$link.'">'.$CateName.'</a></li>';
     }
     $html_dssp='';
