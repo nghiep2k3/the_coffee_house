@@ -1,57 +1,105 @@
-<?php
-// Kết nối tới cơ sở dữ liệu
-include "../connect.php";
+<!DOCTYPE html>
+<html lang="en">
 
-// Kiểm tra kết nối
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
-// Truy vấn các sản phẩm có active = 1
-$sql = "SELECT id, name, quantity, unit_price, description, src_img FROM products WHERE active = 1";
-$result = $conn->query($sql);
-
-if ($result->num_rows > 0) {
-    // Hiển thị các sản phẩm
-    echo "<h1>Giỏ hàng</h1>";
-
-    if (isset($_GET['message'])) {
-        echo "<p>" . htmlspecialchars($_GET['message']) . "</p>";
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh sách sản phẩm trong giỏ hàng</title>
+    <style>
+    table {
+        width: 50%;
+        border-collapse: collapse;
+        margin: 25px 0;
+        font-size: 18px;
+        text-align: left;
     }
-    ?>
-<table border='1'>
-    <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Quantity</th>
-        <th>Unit Price</th>
-        <th>Description</th>
-        <th>Image</th>
-        <th>Actions</th>
-    </tr>
-    <?php while ($row = $result->fetch_assoc()): ?>
-    <tr>
-        <td><?php echo $row["id"]; ?></td>
-        <td><?php echo $row["name"]; ?></td>
-        <td><input value="1" /></td>
-        <td><?php echo $row["unit_price"]; ?></td>
-        <td><?php echo $row["description"]; ?></td>
-        <td><img src="<?php echo $row["src_img"]; ?>" alt="Product Image" width="100"></td>
-        <td>
-            <form action="../controller/removecart.php" method="post" style="display:inline;">
-                <input type="hidden" name="product_id" value="<?php echo $row["id"]; ?>">
-                <button type="submit">Xóa</button>
-            </form>
-        </td>
-    </tr>
-    <?php endwhile; ?>
-</table>
 
-<b></b>
-<?php
-} else {
-    echo "Không có sản phẩm nào trong giỏ hàng.";
-}
+    th,
+    td {
+        padding: 12px;
+        border-bottom: 1px solid #ddd;
+    }
 
-$conn->close();
-?>
+    th {
+        background-color: #f2f2f2;
+    }
+    </style>
+</head>
+
+<body>
+    <h1>Danh sách sản phẩm trong giỏ hàng</h1>
+
+    <script>
+    // Lấy username từ Local Storage
+    var user = localStorage.getItem('username');
+    if (user) {
+        // Chuyển hướng đến cùng trang với username trong query string
+        // window.location.href = window.location.pathname + '?username=' + encodeURIComponent(username);
+    } else {
+        document.write("Không có username trong Local Storage.");
+    }
+    </script>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Tên sản phẩm</th>
+                <th>Giá</th>
+                <th>Số lượng</th>
+                <th>Mô tả</th>
+                <th>Thành tiền</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            include "../connect.php";
+
+            // Lấy username từ query string
+            $username = isset($_GET['username']) ? $_GET['username'] : '';
+            var_dump($username);
+
+            // Kiểm tra kết nối
+            if ($conn->connect_error) {
+                die("Kết nối thất bại: " . $conn->connect_error);
+            }
+
+            // Câu lệnh SQL để nối hai bảng và lấy dữ liệu cần thiết
+            $sql = "SELECT p.name, p.unit_price, p.description, c.quantity
+                    FROM cart c
+                    JOIN products p ON c.id_product = p.id
+                    WHERE c.name_account = ?";
+
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param("s", $username);
+            $stmt->execute();
+            $result = $stmt->get_result();
+
+            if ($result->num_rows > 0) {
+                // Hiển thị kết quả trong bảng
+                while($row = $result->fetch_assoc()) {
+                    $name = $row["name"];
+                    $unit_price = $row["unit_price"];
+                    $quantity = $row["quantity"];
+                    $description = $row["description"];
+                    $total_price = $unit_price * $quantity;
+
+                    echo "<tr>";
+                    echo "<td>" . htmlspecialchars($name) . "</td>";
+                    echo "<td>" . number_format($unit_price, 2) . "</td>";
+                    echo "<td>" . $quantity . "</td>";
+                    echo "<td>" . htmlspecialchars($description) . "</td>";
+                    echo "<td>" . number_format($total_price, 2) . "</td>";
+                    echo "</tr>";
+                }
+            } else {
+                echo "<tr><td colspan='5'>Không có sản phẩm nào trong giỏ hàng.</td></tr>";
+            }
+
+            // Đóng kết nối
+            $conn->close();
+            ?>
+        </tbody>
+    </table>
+</body>
+
+</html>

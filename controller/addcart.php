@@ -13,32 +13,31 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         die("Connection failed: " . $conn->connect_error);
     }
 
-    // Cập nhật trường active thành TRUE cho sản phẩm có id tương ứng
-    $sql = "UPDATE products SET active = TRUE WHERE id = ?";
-    $stmt = $conn->prepare($sql);
+    // Lấy dữ liệu từ form
+    $id_product = isset($_POST['product_id']) ? (int) $_POST['product_id'] : 0;
+    $id_account = 3; // Bạn có thể thay đổi để lấy ID người dùng hiện tại
+    $name_account = 'vinhmom123'; // Bạn có thể thay đổi để lấy tên người dùng hiện tại
 
-    if ($stmt === false) {
-        die("Prepare failed: " . $conn->error);
-    }
+    // Kiểm tra nếu sản phẩm đã tồn tại trong giỏ hàng của người dùng
+    $sql_check = "SELECT quantity FROM cart WHERE id_account = $id_account AND id_product = $id_product";
+    $result_check = $conn->query($sql_check);
 
-    // Gán biến productId vào câu lệnh SQL
-    if (!$stmt->bind_param("i", $productId)) {
-        die("Binding parameters failed: " . $stmt->error);
-    }
-
-    // Thực thi câu lệnh SQL
-    if (!$stmt->execute()) {
-        $message = "Error: " . $stmt->error;
+    if ($result_check->num_rows > 0) {
+        // Sản phẩm đã tồn tại trong giỏ hàng, cập nhật số lượng
+        $row = $result_check->fetch_assoc();
+        $new_quantity = $row['quantity'] + 1;
+        $sql_update = "UPDATE cart SET quantity = $new_quantity WHERE id_account = $id_account AND id_product = $id_product";
+        $conn->query($sql_update);
     } else {
-        $message = "Success";
+        // Sản phẩm chưa có trong giỏ hàng, thêm mới
+        $sql_insert = "INSERT INTO cart (id_account, name_account, id_product, quantity) VALUES ($id_account, '$name_account', $id_product, 1)";
+        $conn->query($sql_insert);
     }
 
-    // Đóng câu lệnh và kết nối
-    $stmt->close();
+    // Đóng kết nối
     $conn->close();
-
     // Quay lại trang danh sách sản phẩm và hiển thị thông báo
-    header("Location: ../view/dssp.php?message=" . urlencode($message));
+    header("Location: ../view/dssp.php?message=" . "Succes");
     exit();
 }
 ?>
