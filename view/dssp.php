@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Danh sách sản phẩm</title>
 </head>
 
 <body>
@@ -31,6 +31,26 @@
         <button type="submit">Thêm vào giỏ hàng 3</button>
     </form>
     <button><a href="chitiet.php?id=3">Chi tiết 3</a></button>
+
+    <!-- Nút Giỏ hàng -->
+    <button id="viewCart">Giỏ hàng</button>
+
+    <script>
+    document.getElementById('viewCart').addEventListener('click', function() {
+        // Lấy username từ Local Storage
+        var username = localStorage.getItem('username');
+        if (username) {
+            // Tạo một thẻ a để mở trang trong tab mới
+            var a = document.createElement('a');
+            a.href = 'cart.php?username=' + encodeURIComponent(username);
+            a.target = '_blank';
+            a.click();
+        } else {
+            alert("Không có username trong Local Storage.");
+        }
+    });
+    </script>
+
 </body>
 
 </html>
