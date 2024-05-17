@@ -1,17 +1,5 @@
 <?php
     require_once 'connect.php';
-    function danhmuc_all() {
-        $sql = "SELECT * FROM productcategory ORDER BY stt DESC";
-        return pdo_query($sql);
-    }
-    function get_dssp($iddm,$limi) {
-        $sql = "SELECT * FROM product WHERE 1";
-        if ($iddm>0) {
-            $sql .=" AND idCategory=".$iddm;
-        }
-        $sql .= " ORDER BY id DESC limit ".$limi;
-        return pdo_query($sql);
-    }
 // function hang_hoa_insert($ten_hh, $don_gia, $giam_gia, $hinh, $ma_loai, $dac_biet, $so_luot_xem, $ngay_nhap, $mo_ta){
 //     $sql = "INSERT INTO hang_hoa(ten_hh, don_gia, giam_gia, hinh, ma_loai, dac_biet, so_luot_xem, ngay_nhap, mo_ta) VALUES (?,?,?,?,?,?,?,?,?)";
 //     pdo_execute($sql, $ten_hh, $don_gia, $giam_gia, $hinh, $ma_loai, $dac_biet==1, $so_luot_xem, $ngay_nhap, $mo_ta);

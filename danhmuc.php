@@ -9,18 +9,24 @@
     <link rel="stylesheet" href="./product.css">
 </head>
 <?php
-    require_once 'product.php';
-    $dsdm = danhmuc_all();
+    require_once './connect.php';
+    $sql = "SELECT * FROM productcategory ORDER BY stt DESC";
+    $dsdm = mysqli_query($conn,$sql);
     if(!isset($_GET['iddm'])) {
         $iddm=0;
     } else {
         $iddm = $_GET['iddm'];
     }
-    $dssp = get_dssp($iddm, 4);
+    $sql = $sql = "SELECT * FROM product WHERE 1";
+    if ($iddm>0) {
+        $sql .=" AND idCategory=".$iddm;
+    }
+    $sql .= " ORDER BY id DESC limit 4";
+    $dssp = mysqli_query($conn,$sql);
     $html_dm = '';
     foreach ($dsdm as $dm) {
         extract($dm);
-        $link = 'danhmuc.php&iddm='.$id;
+        $link = 'danhmuc.php?iddm='.$id;
         $html_dm.='<li><a class="infor-extra" href="'.$link.'">'.$CateName.'</a></li>';
     }
     $html_dssp='';
