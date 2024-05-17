@@ -66,6 +66,14 @@
             <div id="user-greeting" style="display: none;">
                 <span>Welcome, <span id="username-display"></span></span>
             </div>
+            <form action="index.php" method="post">
+                    <button style="display: none;" class="button login" id="logout" type="submit" name="switch-logout">
+                        <span class="button-content">Đăng xuất</span>
+                    </button>
+            </form>
+            <?php
+                require_once "./controller/logout.php";
+            ?>
         </header>
         <!-- <div class="slider">
             <i class="ti-angle-left icon-slider-left"></i>
@@ -129,9 +137,6 @@
                 <span class="visually-hidden">Next</span>
             </button>
         </div>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
-        </script>
     </div>
     <script>
     document.addEventListener("DOMContentLoaded", function() {
@@ -141,8 +146,16 @@
             document.getElementById("username-display").textContent = username;
             document.getElementById("user-greeting").style.display = "block";
             document.getElementById("user-greeting").style.color = "white";
-        }
+            document.getElementById("logout").style.display = "block";
+        }   
+        document.getElementById("logout").addEventListener("click", function() {
+            localStorage.removeItem("username");
+            document.getElementById("login-form").style.display = "block";
+            document.getElementById("user-greeting").style.display = "none";
+            document.getElementById("logout").style.display = "none";
+        });
     });
+    
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
