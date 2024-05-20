@@ -14,19 +14,28 @@
         require_once "../connect.php";
         $username = $_POST['email'];
         $password = $_POST['password'];
-        $sql = "SELECT * FROM account WHERE user='$username' and password='$password'";
-        $result = mysqli_query($conn, $sql);
-        if (mysqli_num_rows($result) == 1) {
+        $stmt = $conn->prepare("SELECT * FROM account WHERE user=? AND password=?");
+        $stmt->bind_param("ss", $username, $password);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows == 1) {
+            $row = $result->fetch_assoc();
             $_SESSION['mySession'] = $username;
+            $_SESSION['role'] = $row['role']; 
+            $role = $_SESSION['role'];
             echo "<script>
                     localStorage.setItem('username', '$username');
-                    setTimeout(function() {
-                        window.location.href = '../index.php';
-                    }, 2000);
+                    localStorage.setItem('role', '$role');
+                    setTimeout(function() {";
+                echo "window.location.href = '../view/index.php';";
+            echo "}, 2000);
                   </script>";
         } else {
             echo "Sai tài khoản hoặc mật khẩu";
         }
+        $stmt->close();
+        $conn->close();
     }
     ?>
 </body>

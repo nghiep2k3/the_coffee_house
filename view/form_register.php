@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +8,6 @@
     <link rel="stylesheet" href="../login.css">
     <title>Document</title>
 </head>
-
 <body>
     <div class="form_register_box">
         <form action="form_register.php" method="post">
@@ -27,7 +25,9 @@
     </div>
     <?php
     include "../controller/register.php";
+    if($check==1) {
+        header('location: ../index.php');
+    }
     ?>
 </body>
-
 </html>
