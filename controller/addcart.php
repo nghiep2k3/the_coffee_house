@@ -15,8 +15,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Lấy dữ liệu từ form
     $id_product = isset($_POST['product_id']) ? (int) $_POST['product_id'] : 0;
-    $id_account = 3; // Bạn có thể thay đổi để lấy ID người dùng hiện tại
-    $name_account = 'vinhmom123'; // Bạn có thể thay đổi để lấy tên người dùng hiện tại
+    $id_account = 1; // Bạn có thể thay đổi để lấy ID người dùng hiện tại
+    $name_account = 'nghiep1320'; // Bạn có thể thay đổi để lấy tên người dùng hiện tại
 
     // Kiểm tra nếu sản phẩm đã tồn tại trong giỏ hàng của người dùng
     $sql_check = "SELECT quantity FROM cart WHERE id_account = $id_account AND id_product = $id_product";
