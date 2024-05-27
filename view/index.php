@@ -29,7 +29,7 @@
             </div>
             <div class="carousel-inner slider">
                 <div class="carousel-item active">
-                    <img src="../assest/img/coffee-2562435_1280.jpg" class="d-block w-100" alt="...">
+                    <img src="../assets/img/coffee-2562435_1280.jpg" class="d-block w-100" alt="...">
                     <div class="text-content">
                         <h2 class="text-heading">a place of tranquility</h2>
                         <div class="text-description">Lorem ipsum dolor sit amet consectetur adipisi</div>
@@ -39,7 +39,7 @@
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="../assest/img/coffee-shop-393954_1280.jpg" class="d-block w-100" alt="...">
+                    <img src="../assets/img/coffee-shop-393954_1280.jpg" class="d-block w-100" alt="...">
                     <!-- <div class="text-content">
                     <h2 class="text-heading">a place of tranquility</h2>
                     <div class="text-description">Lorem ipsum dolor sit amet consectetur adipisi</div>
@@ -48,7 +48,7 @@
                     </button> -->
                 </div>
                 <div class="carousel-item">
-                    <img src="../assest/img/pexels-photo-3968061.jpeg" class="d-block w-100" alt="...">
+                    <img src="../assets/img/pexels-photo-3968061.jpeg" class="d-block w-100" alt="...">
                     <!-- <div class="text-content"> -->
                     <!-- <h2 class="text-heading">a place of tranquility</h2>
                     <div class="text-description">Lorem ipsum dolor sit amet consectetur adipisi</div>
