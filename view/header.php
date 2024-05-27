@@ -9,7 +9,7 @@
     <header>
         <div style="width: 60px;">
             <a href="" class="logo">
-                <img src="../assest/img/logo.png" alt="">
+                <img src="../assets/img/logo.png" alt="">
             </a>
         </div>
         <ul class="nav-bar">

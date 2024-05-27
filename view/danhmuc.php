@@ -42,7 +42,7 @@
         '.$best.'
         <a href="./product.html">
             <div class="item-img">
-                <img src="../assest/img/'.$image.'" alt=""
+                <img src="../assets/img/'.$image.'" alt=""
                     class="img-tea-item">
             </div>
             <div class="item-tt">
