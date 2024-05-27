@@ -7,7 +7,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="../product.css">
-    <link rel="stylesheet" href="../assest/icons/themify-icons/themify-icons.css">
+    <link rel="stylesheet" href="../assets/icons/themify-icons/themify-icons.css">
 </head>
 <?php
     require_once '../connect.php';

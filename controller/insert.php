@@ -4,7 +4,7 @@ if (isset($_POST['insert'])) {
     $price = $_POST['price'];
     $idCategory = $_POST['idCategory'];
     $best_seller = isset($_POST['best_seller']) ? 1 : 0;
-    $target_dir = "../assest/img/";
+    $target_dir = "../assets/img/";
     $target_file = $target_dir . basename($_FILES["image"]["name"]);
     $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
     $check = getimagesize($_FILES["image"]["tmp_name"]);

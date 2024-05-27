@@ -11,7 +11,7 @@
 <body>
     <header>
         <div class="logo">
-            <a href="#"><img src="../assest/img/logo.png" alt="Logo"></a>
+            <a href="#"><img src="../assets/img/logo.png" alt="Logo"></a>
         </div>
         <nav>
             <ul>
@@ -57,7 +57,7 @@
                             echo "<tr>";
                             echo "<td>" . $row['id'] . "</td>";
                             echo "<td>" . $row['product_name'] . "</td>";
-                            echo "<td><img src='../assest/img/" . $row['image'] . "' alt='" . $row['product_name'] . "' width='50'></td>";
+                            echo "<td><img src='..assets/img/" . $row['image'] . "' alt='" . $row['product_name'] . "' width='50'></td>";
                             echo "<td>" . $row['price'] . "</td>";
                             echo "<td>" . ($row['best_seller'] ? 'Yes' : 'No') . "</td>";
                             echo "<td>" . $row['view'] . "</td>";
