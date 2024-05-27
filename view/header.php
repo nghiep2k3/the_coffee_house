@@ -63,7 +63,9 @@
             </button>
         </form>
         <?php
+        if(isset($_POST['switch-logout'])) {
             require_once "../controller/logout.php";
+        }
         ?>
     </header>
     <script>
@@ -75,6 +77,10 @@
                     adminRoles[i].style.display = "inline-block";
                 }
             }
+            document.getElementById("logout").addEventListener("click", function() {
+                localStorage.removeItem("role");
+                localStorage.removeItem("username");
+            });
         });
     </script>
 </body>

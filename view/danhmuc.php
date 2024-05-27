@@ -75,40 +75,12 @@
                 </ul>
             </div>
             <div class="item-container">               
-                <form action="danhmuc.php" method="post">
-                    <button class="insert-btn button-mn" style="display: none;" type="submit" name="insert-btn"> Thêm</button>
-                    <button class="edit-btn button-mn" style="display: none;" type="submit"> Sửa</button>
-                    <button class="delete-btn button-mn" style="display: none;" type="submit"> Xóa</button>
-                </form>
                 <?=$html_dssp;?>
             </div>
         </div>
     </div>
     <?php
-        if(isset($_POST['insert-btn'])) {
-            header('location: ../form_insert.php');
-            exit();
-        }
     ?>
-    <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        var role = localStorage.getItem("role");
-        if (role === 'admin') {
-            var insertButtons = document.getElementsByClassName("insert-btn");
-            var editButtons = document.getElementsByClassName("edit-btn");
-            var deleteButtons = document.getElementsByClassName("delete-btn");
-            for (var i = 0; i < insertButtons.length; i++) {
-                insertButtons[i].style.display = "inline-block";
-            }
-            for (var i = 0; i < editButtons.length; i++) {
-                editButtons[i].style.display = "inline-block";
-            }
-            for (var i = 0; i < deleteButtons.length; i++) {
-                deleteButtons[i].style.display = "inline-block";
-            }
-        }
-    });
-    </script>
 </body>
 
 </html>
