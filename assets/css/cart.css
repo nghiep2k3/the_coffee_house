@@ -1,0 +1,20 @@
+#content {
+    width: 100%;
+    margin-top: 84px !important;
+}
+
+#list_cart {
+    padding: 0 70px;
+    display: flex;
+}
+
+.content_right {
+    /* background-color: red; */
+    width: 68%;
+}
+
+.content_left {
+    /* background-color: green; */
+    height: 1000px;
+    width: 32%;
+}
