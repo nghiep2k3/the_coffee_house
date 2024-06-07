@@ -10,7 +10,7 @@ if (isset($_POST['insert'])) {
     $check = getimagesize($_FILES["image"]["tmp_name"]);
     if ($check !== false) {
         if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
-            $sql = "INSERT INTO product (name, price, image, idCategory, best_seller) VALUES ('$name', '$price', '".basename($_FILES["image"]["name"])."', '$idCategory', '$best_seller')";
+            $sql = "INSERT INTO products (name, price, image, idCategory, best_seller) VALUES ('$name', '$price', '".basename($_FILES["image"]["name"])."', '$idCategory', '$best_seller')";
             if (mysqli_query($conn, $sql)) {
                 echo "Thêm sản phẩm thành công.";
             } else {

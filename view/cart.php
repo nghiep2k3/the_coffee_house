@@ -116,7 +116,8 @@
                             <p>Xuất hóa đơn</p>
                         </div>
                         <div class="w-100">
-                            <button type="button" class="w-100 btn btn-outline-secondary">Tiếp tục mua hàng</button>
+                            <button type="button" class="w-100 btn btn-outline-secondary">Tiếp tục mua
+                                hàng</button>
                         </div>
                         <div class="w-100 my-2">
                             <button type="button" class="w-100 bg-warning text-white btn btn-outline-white">Thanh

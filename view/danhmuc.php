@@ -18,11 +18,11 @@
     } else {
         $iddm = $_GET['iddm'];
     }
-    $sql = $sql = "SELECT * FROM product WHERE 1";
+    $sql = $sql = "SELECT * FROM products WHERE 1";
     if ($iddm>0) {
         $sql .=" AND idCategory=".$iddm;
     }
-    $sql .= " ORDER BY id DESC limit 4";
+    $sql .= " ORDER BY id DESC";
     $dssp = mysqli_query($conn,$sql);
     $html_dm = '';
     foreach ($dsdm as $dm) {
@@ -40,17 +40,15 @@
         }
         $html_dssp .='<div class="box-item">
         '.$best.'
-        <a href="./product.html">
             <div class="item-img">
-                <img src="../assets/img/'.$image.'" alt=""
+                <img src="'.$image.'" alt=""
                     class="img-tea-item">
             </div>
             <div class="item-tt">
                 <p class="name-tea">'.$name.'</p>
-                <p class="price">'.$price.' đ</p>
-                <button class="btn-item">Thêm vào giỏ</button>
+                <p class="price">'.$unit_price.' đ</p>
+                <button class="btn-item" name = "check-log">Thêm vào giỏ</button>
             </div>
-        </a>
     </div>';
     }
 ?>
@@ -64,10 +62,10 @@
             <div class="sidebar">
                 <ul class="cate-product">
                     <li class="all-item">All Items</li>
-                    <li><a style="color: #d38338ad; font-size: 18px;" href="./menu.html">Herbal Tea</a></li>
-                    <li><a href="./fruittea.html">Fruit Tea</a></li>
-                    <li><a href="./cupcake.html">Cupcake</a></li>
-                    <li><a href="./tiramisu.html">Tiramisu</a></li>
+                    <li><a style="color: #d38338ad; font-size: 18px;" href="">Herbal Tea</a></li>
+                    <li><a href="">Fruit Tea</a></li>
+                    <li><a href="">Cupcake</a></li>
+                    <li><a href="">Tiramisu</a></li>
                 </ul>
                 <ul class="cate-product">
                     <li class="all-item">Danh mục sản phẩm</li>
@@ -79,8 +77,24 @@
             </div>
         </div>
     </div>
-    <?php
-    ?>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const buttons = document.querySelectorAll('.btn-item');
+            buttons.forEach(button => {
+                button.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    const productId = this.getAttribute('data-product-id');
+                    const user = localStorage.getItem('username');
+                    if (user) {
+                        window.location.href = `chitiet.php?id=${productId}`;
+                    } else {
+                        alert('Bạn cần đăng nhập để thêm sản phẩm vào giỏ.');
+                        window.location.href = './form_login.php';
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>

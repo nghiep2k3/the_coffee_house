@@ -1,5 +1,6 @@
 <?php
     require_once "../connect.php";
+    $check=0;
     if(isset($_POST['sigup'])) {
         $id = "";
         $phonenumber = $_POST['phone'];
