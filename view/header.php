@@ -46,7 +46,7 @@
                             <span class="button-content">Đăng ký</span>
                         </button>
                         <div id="user-greeting" style="display: none;">
-                        <span id="username-display"></span>
+                            <span id="username-display"></span>
                         </div>
                         <button style="display: none;" class="button login" id="logout" type="submit"
                             name="switch-logout">
@@ -58,7 +58,12 @@
             <i class="header-i ti-shopping-cart"></i>
         </div>
         <?php
-                require_once "../controller/login.php";
+                require_once "../controller/loginController.php";
+                $controller = new LoginController();
+                if ($_SERVER['REQUEST_URI'] == '/login' && $_SERVER['REQUEST_METHOD'] == 'POST') {$controller->handleLogin();
+} else {
+    $controller->showLoginForm();
+}
                 if(isset($_POST['switch-login'])) {
                     header('location: ./form_login.php');
                 }
@@ -66,7 +71,6 @@
                     header('location: ./form_register.php');
                 }
             ?>
-
         <?php
         if(isset($_POST['switch-logout'])) {
             require_once "../controller/logout.php";
