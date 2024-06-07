@@ -1,75 +1,56 @@
-a {
-    text-decoration: none;
+p {
+    margin: 0;
 }
-.col-half {
-    width: 50%;
-}
-.col-third {
-    width: 33.3333%;
-}
-.sc-item {
-    margin-top: 40px;
-}
-.col-half {
-    width: 50%;
-}
-.product {
-    display: flex;
-    margin-top: 95px;
-}
-.sidebar {
-    width: 20%;
-}
-.cate-product {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.read-more {
     margin-top: 20px;
-    padding-bottom: 30px;
-    border-bottom: solid #ccc;
-    margin-left: 40px;
 }
-.all-item {
-    font-weight: 600;
-    font-size: 18px;
-    line-height: 2.0;
-    list-style: none;
+.form {
+    display: flex;
 }
-.cate-product li a{
-    font-size: 15px;
-    line-height: 2.0;
-    color: #8fa382;
+.carousel-item {
+    position: relative;
+    height: 100vh;
 }
-.cate-product li {
-    list-style: none;
+
+.text-content {
+    position: absolute;
+    bottom: 10%;
+    text-align: center;
+    left: 40%;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
 }
-.cate-product li :hover{
-    color: #66755b;
-}
-.button-mn {
-    padding: 1.3em 3em;
-    font-size: 12px;
+.text-heading {
     text-transform: uppercase;
-    letter-spacing: 2.5px;
-    font-weight: 500;
-    color: #000;
-    background-color: #fff;
-    border: none;
-    border-radius: 45px;
-    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease 0s;
-    cursor: pointer;
-    outline: none;
+    font-size: 30px;
 }
-.button-mn:hover {
-    background-color: #23c483;
-    box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+#user-greeting {
+    width: 90px;
+}
+.best-sell {
+    background-image: linear-gradient(178.6deg, rgb(20, 36, 50) 11.8%, rgb(124, 143, 161) 83.8%);
+}
+.sell-container {
+    display: flex;
+    margin: 0 20px;
+    justify-content: space-around;
+    flex-direction: column;
+}
+.title-bs {
+    margin-top: 50px;
+}
+.list-bs {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0 20px;    
+}
+.title-head {
+    margin: 0px 100px 20px;
     color: #fff;
-    transform: translateY(-7px);
 }
-.button-mn:active {
-    transform: translateY(-1px);
-}
+
 .item-container {
     display: flex;
     flex-wrap: wrap;
@@ -80,14 +61,18 @@ a {
 .items {
     display: flex;
 }
+.sell-item {
+    width: 310px !important;
+    height: 290px !important;
+}
 .box-item {
-    margin: 0 60px 90px 60px;
+    margin-bottom: 90px;
     width: 280px;
     height: 250px;
     border-radius: 20px;
     background: linear-gradient(170deg, rgba(58, 56, 56, 0.623) 0%, rgb(31, 31, 31) 100%);
     position: relative;
-    box-shadow: 0 25px 50px rgba(0,0,0,0.55);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.55);
     cursor: pointer;
     transition: all .3s;
 }
@@ -142,9 +127,8 @@ a {
     height: 100%;
 }
 .item-tt {
-    margin-top: -70px;
+    margin-top: -90px;
     width: 100%;
-    height: 28%;
     display: flex;
     position: absolute;
     background-color: rgba(236, 157, 72, 0.4);
@@ -162,7 +146,6 @@ a {
     color: #fff;
 }
 .btn-item {
-    margin-top: 10px;
     color: #fff;
     background: #ec9d48;
     padding: 10px 20px;
@@ -179,4 +162,70 @@ a {
 .img-tea-item {
     width: 100%;
     height: 100%;
+}
+#myDIV {
+    position: relative;
+    height:500px; 
+    transition: all 0.9s;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center; 
+    background-image: url("assets/img/loginimg.jpg");  
+} 
+body {
+    height: 2000px;
+}
+.edtf {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+.application {
+    text-align: start;
+    align-content: center;
+    height:500px; 
+    color: white;
+    border-radius: 5px;
+    width: 31%;
+  }
+.text-title {
+    font-style: italic;
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+.text-app {
+    text-transform: uppercase;
+    font-size: 35px;
+    font-weight: 800;
+    margin-bottom: 20px;
+}
+.edtf-img {
+    width: 100%;
+    height: 250px;
+}
+.border-text-title {
+    width: 120px;
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    border-bottom: 2px solid #c7a17a;
+    margin: 5px 0;
+}
+.app-description {
+    margin-top: 20px;
+}
+.edgtf-video-button {
+    text-align: start;
+    align-content: center;
+}
+.edgtf-video-button-image {
+    position: relative;
+}
+.play-button {
+    position: absolute;
+    left: 45%;
+    top: 45%;
+    font-size: 30px;
+    color: #fff;
 }

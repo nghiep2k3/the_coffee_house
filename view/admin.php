@@ -11,7 +11,7 @@
 <body>
     <header>
         <div class="logo">
-            <a href="#"><img src="../assest/img/logo.png" alt="Logo"></a>
+            <a href="#"><img src="../assets/img/logo.png" alt="Logo"></a>
         </div>
         <nav>
             <ul>
@@ -47,8 +47,8 @@
                 <tbody id="product-list">
                     <?php
                     require_once '../connect.php';
-                    $sql = "SELECT p.id, p.name AS product_name, p.image, p.price, p.best_seller, p.view, c.CateName AS category_name
-                            FROM product p
+                    $sql = "SELECT p.id, p.name AS product_name, p.image, p.unit_price, p.best_seller, p.view, c.CateName AS category_name
+                            FROM products p
                             JOIN productcategory c ON p.idCategory = c.id";
                     $result = $conn->query($sql);
 
@@ -57,8 +57,8 @@
                             echo "<tr>";
                             echo "<td>" . $row['id'] . "</td>";
                             echo "<td>" . $row['product_name'] . "</td>";
-                            echo "<td><img src='../assest/img/" . $row['image'] . "' alt='" . $row['product_name'] . "' width='50'></td>";
-                            echo "<td>" . $row['price'] . "</td>";
+                            echo "<td><img src='" . $row['image'] . "' alt='" . $row['product_name'] . "' width='50'></td>";
+                            echo "<td>" . $row['unit_price'] . "</td>";
                             echo "<td>" . ($row['best_seller'] ? 'Yes' : 'No') . "</td>";
                             echo "<td>" . $row['view'] . "</td>";
                             echo "<td>" . $row['category_name'] . "</td>";

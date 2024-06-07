@@ -28,16 +28,17 @@ header {
     width: 100%;
     top: 0;
     right: 0;
-    z-index: 1000;
+    z-index: 2;
     display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    justify-content:space-around;
     align-items: center;
-    padding: 10px 100px;
     transition: 0.5s linear;
     background: rgba(0, 0, 0, 0.5);
 }
 
 .logo img {
+    margin-top: 10px;
     width: 100%;
 }
 
@@ -99,13 +100,30 @@ header {
     font-size: 22px;
     cursor: pointer;
     z-index: 100;
-    display: flex;
+    display: inline-block;
     column-gap: 0.8rem;
 }
-
+#user-icon {
+    position: relative;
+}
+.dropdown-content {
+    display: none;
+    height: 100px;
+    width: 291px;
+    margin-top: 25px;
+    position: absolute;
+    background-color:rgba(0, 0, 0, 0.5);
+    min-width: 160px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+    z-index: 3;
+}
+.dropdown-content form {
+    display: flex;
+    align-items: center;
+}
 .header-i {
     color: #fff;
-    padding: 10px;
+    padding: 30px 10px;
 }
 
 .header-icon :hover {
@@ -136,7 +154,6 @@ header {
     border: none;
     cursor: pointer;
 }
-
 .button:hover::before {
     transform: scaleX(1);
 }
@@ -160,8 +177,15 @@ header {
 .button-content {
     position: relative;
     z-index: 99;
+    font-size: 15px;
+    line-height: 50px;
 }
-
-.read-more {
-    margin-top: 20px;
+.login {
+    margin-left: 15px;
+}
+.login:hover {
+    color: #fff;
+}
+.button-content:hover {
+    color: #fff;
 }

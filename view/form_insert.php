@@ -27,11 +27,16 @@
         </select><br>
         <label for="best_seller">Best Seller:</label>
         <input type="checkbox" id="best_seller" name="best_seller" value="1"><br>
-        <button type="submit" name="insert" class="button-mn">Thêm sản phẩm</button>
-        <button type="submit" class="button-mn">Thoát</button>
+        <form action="form_insert.php" method="post">
+            <button type="submit" name="insert" class="button-mn">Thêm sản phẩm</button>
+            <button type="submit" name="quit" class="button-mn">Thoát</button>
+        </form>
     </form>
     <?php
-        require '../controller/insert.php'
+        require '../controller/insert.php';
+        if(isset($_POST['quit'])) {
+            header('location: ./index.php');
+        }
     ?>
 </div>
 </body>
