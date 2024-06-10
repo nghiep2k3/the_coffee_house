@@ -28,5 +28,4 @@
     require_once "../controller/login.php";
     ?>
 </body>
-
 </html>
