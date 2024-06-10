@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" href="../assets/icons/themify-icons/themify-icons.css">
+    <link rel="stylesheet" href="../assest/icons/themify-icons/themify-icons.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <title>Document</title>
@@ -139,7 +139,7 @@
                     <div class="app-description">Alienum phaedrum torquatos nec eu, vis detraxit periculis ex, nihil expetendis in mei. Mei an pericula euripidis, hinc partem ei est. Eos ei nisl graecis, vix aperiri consequat an. Eius lorem tincidunt vix at, vel pertinax sensibus id, error epicurei mea et. Mea facilisis urbanitas moderatius id.</div>
                     <button class="button read-more">
                         <span class="button-content">Đọc thêm</span>
-                    </button>
+                    </button> -->
                 </div>
                 <div class="edgtf-video-button">
                     <a itemprop="image" class="edgtf-video-button-play" href="https://www.youtube.com/watch?v=AVuJTw5yEH8"

@@ -11,7 +11,7 @@
 <body>
     <header>
         <div class="logo">
-            <a href="#"><img src="../assets/img/logo.png" alt="Logo"></a>
+            <a href="#"><img src="../assest/img/logo.png" alt="Logo"></a>
         </div>
         <nav>
             <ul>
