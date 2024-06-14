@@ -1,15 +1,15 @@
 <?php
+require_once __DIR__ . '/../services/UserService.php';
 class UserController {
-    private $userModel;
+    private $userService;
 
-    public function __construct($userModel) {
-        $this->userModel = $userModel;
+    public function __construct($userService) {
+        $this->userService = $userService;
     }
 
     public function login($username, $password) {
-        $user = $this->userModel->getUser($username, $password);
+        $user = $this->userService->getUser($username, $password);
         if ($user) {
-            session_start();
             $_SESSION['user'] = $user;
             return true;
         } else {
