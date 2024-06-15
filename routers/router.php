@@ -1,29 +1,24 @@
 <?php
 session_start();
-// define('ROOT', dirname(__FILE__));
-define('APP_PATH', ROOT . '/routers');
-define('VIEW_PATH', 'views');
 
-// Include các file cần thiết
-require_once 'config/config.php';
-require_once 'services/UserService.php';
-require_once 'controllers/UserController.php';
+define('BASE_URL', '/the_coffee_house');
+require_once __DIR__ . '/../config/config.php';
+require_once __DIR__ . '/../services/UserService.php';
+require_once __DIR__ . '/../controllers/UserController.php';   
 
-// Khởi tạo các đối tượng cần thiết
 $database = new Database();
 $userService = new UserService($database);
 $userController = new UserController($userService);
-
-// Xử lý các action từ URL
 $action = isset($_GET['action']) ? $_GET['action'] : '';
-
 switch ($action) {
     case 'login':
         handleLogin($userController);
         break;
-        
+    case 'register':
+        handleRegister($userController);
+        break;
     default:
-        require VIEW_PATH . '/login.php';
+        require __DIR__ . '/../views/login.php';
         break;
 }
 function handleLogin($userController) {
@@ -31,14 +26,31 @@ function handleLogin($userController) {
         $username = $_POST['username'];
         $password = $_POST['password'];
         if ($userController->login($username, $password)) {
-            header("Location: views/sercure.php");
+            header("Location: " . BASE_URL . "/index.php");
             exit();
         } else {
             $error = "Invalid username or password.";
-            require VIEW_PATH . '/login.php';
+            require __DIR__ . '/../views/login.php';
         }
     } else {
-        require VIEW_PATH . '/login.php';
+        require __DIR__ . '/../views/login.php';
+    }
+}
+function handleRegister($userController) {
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $phone = $_POST['phone'];
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+        $rePass = $_POST['re-password'];
+        if ($userController->register($phone, $username, $password, $rePass)) {
+            header("Location: " . BASE_URL . "/index.php");
+            exit();
+        } else {
+            $error = "Registration failed.";
+            require __DIR__ . '/../views/register.php';
+        }
+    } else {
+        require __DIR__ . '/../views/register.php';
     }
 }
 ?>

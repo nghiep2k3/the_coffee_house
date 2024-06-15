@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="./css/header.css">
     <link rel="stylesheet" href="icons/themify-icons/themify-icons.css">
     <title>Document</title>
 </head>
@@ -19,7 +19,7 @@
                 <li><a href="./index.php">Trang chủ</a></li>
                 <li><a class="sub" href="danhmuc.php">Menu
                         <ul class="subnav">
-                            <li><a href="">Tất cả</a></li>
+                            <li><a href="?action=list_products">Tất cả</a></li>
                             <li><a href="">Cà phê</a></li>
                             <li><a href="">Trà</a></li>
                             <li><a href="">Cloud</a></li>
@@ -39,15 +39,14 @@
             <i class="header-i ti-search"></i>
             <i id="user-icon" class="header-i ti-user">
                 <div id="user-dropdown" class="dropdown-content">
-                    <form action="header.php" method="post" id="user-log">
-                        <button class="button login" id="login-button" type="submit" name="switch-login">
+                    <form action="/the_coffee_house/routers/router.php" method="GET" id="user-log">
+                        <button class="button login" id="login-button" type="submit" name="action" value="login">
                             <span class="button-content">Đăng nhập</span>
                         </button>
-                        <button class="button login" id="register-button" type="submit" name="switch-register">
+                        <button class="button login" id="register-button" type="submit" name="action" value="register">
                             <span class="button-content">Đăng ký</span>
                         </button>
-                        <button style="display: none;" class="button login" id="logout" type="submit"
-                            name="switch-logout">
+                        <button style="display: none;" class="button login" id="logout" type="submit" name="action">
                             <span class="button-content">Đăng xuất</span>
                         </button>
                     </form>
@@ -56,5 +55,27 @@
             <i class="header-i ti-shopping-cart"></i>
         </div>
     </header>
+
+    <script>
+    document.getElementById("user-icon").addEventListener("click", function() {
+        var dropdown = document.getElementById("user-dropdown");
+        if (dropdown.style.display === "none" || dropdown.style.display === "") {
+            dropdown.style.display = "block";
+        } else {
+            dropdown.style.display = "none";
+        }
+    });
+
+    // Optional: Close the dropdown when clicking outside
+    window.onclick = function(event) {
+        if (!event.target.matches('#user-icon') && !event.target.closest('#user-dropdown')) {
+            var dropdown = document.getElementById("user-dropdown");
+            if (dropdown.style.display === "block") {
+                dropdown.style.display = "none";
+            }
+        }
+    }
+    </script>
 </body>
+
 </html>

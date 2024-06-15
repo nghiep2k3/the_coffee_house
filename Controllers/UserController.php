@@ -16,5 +16,8 @@ class UserController {
             return false;
         }
     }
+    public function register($phone, $username, $password, $rePass) {
+        return $this->userService->createUser($phone, $username, $password, $rePass);
+    }
 }
 ?>

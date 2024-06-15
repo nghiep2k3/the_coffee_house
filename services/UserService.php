@@ -26,5 +26,21 @@ class UserService {
         }
         return $user;
     }
+    public function createUser($phone, $username, $password, $rePass) {
+        if ($password !== $rePass) {
+            return "Passwords do not match.";
+        }
+        $user = new User(null, $username, $password, 'user');
+        $sql = "INSERT INTO account (username, password, role) VALUES ('$user->username','$user->password', '$user->role')";
+        $result = $this->db->execute($sql);
+
+
+        // Execute the query and return the result
+        if ($result) {
+            return "User created successfully.";
+        } else {
+            return "Error: " . $result->error;
+        }
+    }
 }
 ?>
