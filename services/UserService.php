@@ -33,9 +33,6 @@ class UserService {
         $user = new User(null, $username, $password, 'user');
         $sql = "INSERT INTO account (username, password, role) VALUES ('$user->username','$user->password', '$user->role')";
         $result = $this->db->execute($sql);
-
-
-        // Execute the query and return the result
         if ($result) {
             return "User created successfully.";
         } else {

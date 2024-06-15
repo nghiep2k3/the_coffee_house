@@ -19,7 +19,7 @@
                 <li><a href="./index.php">Trang chủ</a></li>
                 <li><a class="sub" href="danhmuc.php">Menu
                         <ul class="subnav">
-                            <li><a href="?action=list_products">Tất cả</a></li>
+                            <li><a href="?action=product_list">Tất cả</a></li>
                             <li><a href="">Cà phê</a></li>
                             <li><a href="">Trà</a></li>
                             <li><a href="">Cloud</a></li>
@@ -65,8 +65,6 @@
             dropdown.style.display = "none";
         }
     });
-
-    // Optional: Close the dropdown when clicking outside
     window.onclick = function(event) {
         if (!event.target.matches('#user-icon') && !event.target.closest('#user-dropdown')) {
             var dropdown = document.getElementById("user-dropdown");
