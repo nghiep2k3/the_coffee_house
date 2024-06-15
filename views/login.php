@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Login</title>
     <link rel="stylesheet" href="../css/login.css">
 </head>
+
 <body>
     <div class="form_box">
         <form method="post" action="?action=login">
@@ -18,4 +20,5 @@
         <?php if (isset($error)) { echo "<p style='color:red;'>$error</p>"; } ?>
     </div>
 </body>
+
 </html>

@@ -1,5 +1,6 @@
 <?php
 // services/ProductService.php
+// services/ProductService.php
 require_once __DIR__ . '/../config/config.php';
 require_once __DIR__ . '/../models/Product.php';
 
@@ -31,5 +32,23 @@ class ProductService {
         }
         return $products;
     }
+
+    public function getProductById($id) {
+        $sql = "SELECT * FROM products WHERE id = " . intval($id);
+        $this->db->execute($sql);
+        $item = $this->db->getData();
+        if ($item) {
+            return new Product(
+                $item['id'], 
+                $item['name'], 
+                $item['quantity'], 
+                $item['unit_price'], 
+                $item['description'], 
+                $item['src_img']
+            );
+        }
+        return null;
+    }
 }
+
 ?>

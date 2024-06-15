@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <header>
+    <header style="position: static;">
         <div class="top-left">
             <ul class="nav-bar">
                 <a style="width: 60px;" href="" class="logo">
@@ -65,6 +65,8 @@
             dropdown.style.display = "none";
         }
     });
+
+    // Optional: Close the dropdown when clicking outside
     window.onclick = function(event) {
         if (!event.target.matches('#user-icon') && !event.target.closest('#user-dropdown')) {
             var dropdown = document.getElementById("user-dropdown");
