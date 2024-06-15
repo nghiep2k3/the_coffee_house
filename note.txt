@@ -22,3 +22,21 @@ if ($action == 'login') {
     include 'login.php';
 }
 ?>
+
+
+<?php
+// index.php
+require_once __DIR__ . '/controllers/ProductController.php';
+
+$controller = new ProductController();
+$controller->list();
+echo __DIR__.'/controllers/ProductController.php';
+?>
+
+<?php
+ require_once __DIR__ . '/controllers/ProductController.php';
+
+ $controller = new ProductController();
+ $controller->list();
+ echo __DIR__.'/controllers/ProductController.php';
+ ?>
