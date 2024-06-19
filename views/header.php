@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="icons/themify-icons/themify-icons.css">
     <title>Document</title>
 </head>
+
 <body>
     <header style="position: static;">
         <div class="top-left">

@@ -26,7 +26,7 @@
                     </li>
                     <?php endforeach; ?>
                 </ul>
-            </div>  
+            </div>
             <div class="item-container">
                 <?php foreach ($products as $product): ?>
                 <div class="box-item">
@@ -37,6 +37,7 @@
                     <div class="item-tt">
                         <p class="name-tea"><?php echo htmlspecialchars($product->name); ?></p>
                         <p class="price"><?php echo htmlspecialchars($product->unit_price); ?> đ</p>
+                        <p><a href="?action=view_product&id=<?php echo $product->id; ?>">Chi tiết sản phẩm</a></p>
                         <button class="btn-item" name="check-log">Thêm vào giỏ</button>
                     </div>
                 </div>
