@@ -1,11 +1,9 @@
 <?php
-// services/ProductService.php
 require_once __DIR__ . '/../config/config.php';
-require_once __DIR__ . '/../models/Categories.php';
+require_once __DIR__ . '/../models/Category.php';
 
-class ProductService {
+class CategoriesService {
     private $db;
-
     public function __construct() {
         $this->db = new Database();
         $this->db->connect();
@@ -17,11 +15,11 @@ class ProductService {
         $categories = [];
         if ($data) {
             foreach ($data as $item) {
-                $product = new Categories(
+                $category = new Category(
                     $item['id'], 
-                    $item['CateName'], 
+                    $item['CateName']
                 );
-                $categories[] = $categories;
+                $categories[] = $category;
             }
         }
         return $categories;

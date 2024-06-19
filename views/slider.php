@@ -58,39 +58,6 @@
                 crossorigin="anonymous">
             </script>
         </div>
-        <!-- <?php
-                require_once '../connect.php';
-                $sql = "SELECT * FROM products WHERE best_seller = 1 ORDER BY id DESC";
-                $dssp = mysqli_query($conn, $sql);
-                $html_dssp = '';
-                foreach ($dssp as $sp) {
-                    extract($sp);
-                    $best = '<span class="status-product"></span>';
-                    $html_dssp .= '<div class="box-item sell-item">
-                        '.$best.'
-                        <a href="./chitiet.php?id='.$id.'">
-                            <div class="item-img">
-                                <img src="'.$image.'" alt="" class="img-tea-item">
-                            </div>
-                            <div class="item-tt">
-                                <p class="name-tea">'.$name.'</p>
-                                <p class="price">'.$unit_price.' đ</p>
-                                <button class="btn-item">Thêm vào giỏ</button>
-                            </div>
-                        </a>
-                    </div>';
-                }
-            ?>
-        <div class="best-sell">
-            <div class="title-bs">
-                <h3 class="title-head">Best Seller</h3>
-            </div>
-            <div class="sell-container">
-                <div class="list-bs">
-                    <?=$html_dssp;?>
-                </div>
-            </div>
-        </div>  -->
         <div id="myDIV">
             <div class="edtf">
 

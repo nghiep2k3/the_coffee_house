@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="icons/themify-icons/themify-icons.css">
     <title>Document</title>
 </head>
-
 <body>
     <header style="position: static;">
         <div class="top-left">
@@ -17,7 +16,7 @@
                     <img src="https://cdn.haitrieu.com/wp-content/uploads/2022/03/avatar-the-coffee-house.png" alt="">
                 </a>
                 <li><a href="./index.php">Trang chủ</a></li>
-                <li><a class="sub" href="danhmuc.php">Menu
+                <li><a class="sub" href="?action=product_list">Menu
                         <ul class="subnav">
                             <li><a href="?action=product_list">Tất cả</a></li>
                             <li><a href="">Cà phê</a></li>

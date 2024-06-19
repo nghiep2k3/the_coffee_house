@@ -1,7 +1,6 @@
 <?php
-// models/Product.php
 
-class Categories {
+class Category {
     public $id;
     public $CateName;
     public function __construct($id, $CateName) {
