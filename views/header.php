@@ -20,18 +20,36 @@
                 <li><a class="sub" href="?action=product_list">Menu
                         <ul class="subnav">
                             <li><a href="?action=product_list">Tất cả</a></li>
-                            <li><a href="">Cà phê
-                                <ul class="">
-                                    <li><a href="">Cà phê Việt Nam</a></li>
-                                    <li><a href="">Cà phê máy</a></li>
+                            <li class="lv2_title"><a href="">Cà phê
+                                <ul class="menu_child_lv3">
+                                    <li class="lv3_title"><a href="">Cà phê Việt Nam</a></li>
+                                    <li class="lv3_title"><a href="">Cà phê máy</a></li>
                                 </ul>
                             </a></li>
-                            <li><a href="">Trà</a></li>
-                            <li><a href="">Cloud</a></li>
-                            <li><a href="">Tea Healthy</a></li>
-                            <li><a href="">Đá xay</a></li>
-                            <li><a href="">Bánh&snack</a></li>
-                            <li><a href="">Thưởng thức tại nhà</a></li>
+                            <li class="lv2_title"><a href="">Trà
+                            <ul class="menu_child_lv3">
+                                    <li class="lv3_title"><a href="">Trà trái cây</a></li>
+                                    <li class="lv3_title"><a href="">Trà xanh</a></li>
+                                </ul>
+                            </a></li>
+                            <li class="lv2_title"><a href="">Đá xay
+                            <ul class="menu_child_lv3">
+                                    <li class="lv3_title"><a href="">Đá xay Frosty</a></li>
+                                </ul>
+                            </a></li>
+                            <li class="lv2_title"><a href="">Sinh tố
+                            <ul class="menu_child_lv3">
+                                    <li class="lv3_title"><a href="">Sinh tố hoa quả</a></li>
+                                </ul>
+                            </a></li>
+                            <li class="lv2_title"><a href="">Bánh & Snack
+                            <ul class="menu_child_lv3">
+                                    <li class="lv3_title"><a href="">Bánh mặn</a></li>
+                                    <li class="lv3_title"><a href="">Bánh ngọt</a></li>
+                                    <li class="lv3_title"><a href="">Snack</a></li>
+                                </ul>
+                            </a></li>
+                            <li class="lv2_title"><a href="">Thưởng thức tại nhà</a></li>
                         </ul>
                     </a></li>
                 <li><a href="">Giới thiệu</a></li>
