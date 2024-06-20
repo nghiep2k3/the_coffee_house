@@ -40,6 +40,7 @@ if ($method === 'GET') {
 
     switch ($action) {
         case 'add_to_cart':
+            echo '11';
             $ProductsController->addToCart();
             break;
         case 'delete_order':
