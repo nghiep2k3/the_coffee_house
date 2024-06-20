@@ -49,7 +49,7 @@
                             <p><a href="?action=view_product&id=<?php echo $product->id; ?>">Chi tiết sản phẩm</a></p>
                             <input style="display: none;" type="hidden" name="product_id"
                                 value="<?php echo $product->id; ?>">
-                            <input style="display: none;" type="hidden" name="username" value="nghiep2k3">
+                            <input style="display: none;" id="username" type="hidden" name="username" value="">
                             <input style="display: none;" type="number" name="quantity" id="quantity" value="1" min="1">
                             <button class="btn-item" name="check-log" type="submit">Thêm sản phẩm</button>
                         </form>
@@ -59,7 +59,14 @@
             </div>
         </div>
     </div>
-
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var storedUsername = localStorage.getItem('username');
+        if (storedUsername) {
+            document.getElementById('username').value = storedUsername;
+        }
+    });
+</script>
 </body>
 
 </html>

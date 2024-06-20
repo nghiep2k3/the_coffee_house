@@ -61,7 +61,7 @@
         <form action="/the_coffee_house/routers/products_router.php" method="post">
             <input type="hidden" name="action" value="add_to_cart">
             <input type="hidden" name="product_id" value="<?php echo $product->id; ?>">
-            <input type="hidden" name="username" value="nghiep2k3"> <!-- Thay thế bằng tên người dùng đăng nhập -->
+            <input type="hidden" id="username" name="username" value="">
             <div class="quantity-controls">
                 <button type="button" onclick="decreaseQuantity()">-</button>
                 <input type="number" name="quantity" id="quantity" value="1" min="1">
@@ -74,6 +74,12 @@
         <?php endif; ?>
     </div>
     <script>
+        document.addEventListener('DOMContentLoaded', function() {
+        var storedUsername = localStorage.getItem('username');
+        if (storedUsername) {
+            document.getElementById('username').value = storedUsername;
+        }
+    });
     function increaseQuantity() {
         let quantityInput = document.getElementById('quantity');
         quantityInput.value = parseInt(quantityInput.value) + 1;
