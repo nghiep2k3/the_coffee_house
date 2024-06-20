@@ -91,8 +91,6 @@
             dropdown.style.display = "none";
         }
     });
-
-    // Optional: Close the dropdown when clicking outside
     window.onclick = function(event) {
         if (!event.target.matches('#user-icon') && !event.target.closest('#user-dropdown')) {
             var dropdown = document.getElementById("user-dropdown");
@@ -101,5 +99,25 @@
             }
         }
     }
+    document.getElementById('login-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            var form = event.target;
+            var formData = new FormData(form);
+            fetch(form.action, {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    localStorage.setItem('username', data.username);
+                    alert('Login successful!');
+                    window.location.href = "/the_coffee_house/index.php";
+                } else {
+                    alert('Login failed: ' + data.message);
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        });
     </script>
 </body>

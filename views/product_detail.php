@@ -60,7 +60,7 @@
         <p><?php echo $product->description; ?></p>
         <form action="?action=add_to_cart" method="post">
             <input type="hidden" name="product_id" value="<?php echo $product->id; ?>">
-            <input type="hidden" name="username" value="nghiep2k3"> <!-- Thay thế bằng tên người dùng đăng nhập -->
+            <input type="hidden" name="username" value="nghiep2k3">
             <div class="quantity-controls">
                 <button type="button" onclick="decreaseQuantity()">-</button>
                 <input type="number" name="quantity" id="quantity" value="1" min="1">

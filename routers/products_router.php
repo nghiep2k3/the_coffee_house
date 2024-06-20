@@ -37,7 +37,6 @@ if ($method === 'GET') {
     }
 } elseif ($method === 'POST') {
     $action = isset($_POST['action']) ? $_POST['action'] : '';
-
     switch ($action) {
         case 'add_to_cart':
             $ProductsController->addToCart();
