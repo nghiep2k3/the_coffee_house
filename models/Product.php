@@ -1,6 +1,4 @@
 <?php
-// models/Product.php
-
 class Product {
     public $id;
     public $name;

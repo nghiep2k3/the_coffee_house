@@ -1,6 +1,4 @@
 <?php
-// models/Order.php
-
 class Order {
     public $id;
     public $username;
@@ -8,7 +6,6 @@ class Order {
     public $create_id;
     public $id_product;
 
-    // Constructor to initialize the order
     public function __construct($id, $username, $total, $create_id, $id_product) {
         $this->id = $id;
         $this->username = $username;

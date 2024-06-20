@@ -6,7 +6,7 @@ require_once __DIR__ . '/routers/products_router.php';
 require_once __DIR__ . '/routers/add_router.php';
 $action = isset($_GET['action']) ? $_GET['action'] : '';
 ?>
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -19,4 +19,4 @@ $action = isset($_GET['action']) ? $_GET['action'] : '';
         endif;
             ?>
 </body>
-</html>
+</html> -->
