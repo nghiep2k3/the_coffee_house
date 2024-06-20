@@ -10,7 +10,6 @@ $CategoriesController = new CategoriesController();
 
 $action = isset($_GET['action']) ? $_GET['action'] : '';
 $categoryId = isset($_GET['category_id']) ? $_GET['category_id'] : '';
-
 switch ($action) {
     case 'product_list':
         if ($categoryId) {
@@ -22,12 +21,13 @@ switch ($action) {
         break;
     case 'view_product':
         if (isset($_GET['id'])) {
-            $ProductsController->view($_GET['id']); // Sửa lại biến $controller thành $ProductsController
+            $ProductsController->view($_GET['id']);
         }
         break;
     case 'add_to_cart':
         echo '1111';
         $ProductsController->addToCart();
+        header('Location: ?action=list_products');
         break;
     default:
         break;

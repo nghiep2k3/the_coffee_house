@@ -40,7 +40,6 @@ class ProductController {
             $quantity = $_POST['quantity'];
             
             $this->orderService->addOrder($username, $productId, $quantity);
-            header('Location: ?action=list_products');
         }
     }
 }
