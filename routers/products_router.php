@@ -29,7 +29,10 @@ if ($method === 'GET') {
             }
             break;
         case 'show_cart':
-            $username = 'nghiep2k3'; // Thay thế bằng tên người dùng đăng nhập thực tế
+            echo '<script>';
+            echo 'var usernameFromLocalStorage = localStorage.getItem("username");';
+            echo '</script>';
+            $username = '<script>document.write(usernameFromLocalStorage);</script>'; 
             $ProductsController->showCart($username);
             break;
         default:
@@ -37,8 +40,11 @@ if ($method === 'GET') {
     }
 } elseif ($method === 'POST') {
     $action = isset($_POST['action']) ? $_POST['action'] : '';
+    echo "<script>alert('e');</script>";
+    
     switch ($action) {
         case 'add_to_cart':
+            echo "<script>alert('e');</script>";
             $ProductsController->addToCart();
             break;
         case 'delete_order':

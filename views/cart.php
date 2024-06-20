@@ -43,7 +43,7 @@
 
 <body>
     <h1>Shopping Cart</h1>
-    <div class="cart-items" style="display: flex;">
+    <div class="cart-items" style="display: flex; justify-content: start; flex-wrap: wrap;">
         <?php if (!empty($orders)): ?>
         <?php foreach ($orders as $order): ?>
         <div class="cart-item">

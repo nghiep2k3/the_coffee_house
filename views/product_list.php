@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-    // require_once __DIR__ . '/../routers/products_router.php';
+// require_once __DIR__ . '/../routers/products_router.php';
 ?>
 
 <head>
@@ -34,35 +34,39 @@
                         <img src="<?php echo htmlspecialchars($product->src_img); ?>"
                             alt="<?php echo htmlspecialchars($product->name); ?>" class="img-tea-item">
                     </div>
-                    <div class="item-tt">
+                    <!-- <div class="item-tt">
                         <p class="name-tea"><?php echo htmlspecialchars($product->name); ?></p>
                         <p class="price"><?php echo htmlspecialchars($product->unit_price); ?> đ</p>
                         <p><a href="?action=view_product&id=<?php echo $product->id; ?>">Chi tiết sản phẩm</a></p>
                         <button class="btn-item" name="check-log">Thêm vào giỏ</button>
+                    </div> -->
+
+                    <div class="item-tt">
+                        <form action="/the_coffee_house/routers/products_router.php" method="post">
+                            <input type="hidden" name="action" value="add_to_cart">
+                            <p class="name-tea"><?php echo htmlspecialchars($product->name); ?></p>
+                            <p class="price"><?php echo htmlspecialchars($product->unit_price); ?> đ</p>
+                            <p><a href="?action=view_product&id=<?php echo $product->id; ?>">Chi tiết sản phẩm</a></p>
+                            <input style="display: none;" type="hidden" name="product_id"
+                                value="<?php echo $product->id; ?>">
+                            <input style="display: none;" id="username" type="hidden" name="username" value="">
+                            <input style="display: none;" type="number" name="quantity" id="quantity" value="1" min="1">
+                            <button class="btn-item" name="check-log" type="submit">Thêm sản phẩm</button>
+                        </form>
                     </div>
                 </div>
                 <?php endforeach; ?>
             </div>
         </div>
     </div>
-    <script>
+<script>
     document.addEventListener('DOMContentLoaded', function() {
-        const buttons = document.querySelectorAll('.btn-item');
-        buttons.forEach(button => {
-            button.addEventListener('click', function(event) {
-                event.preventDefault();
-                const productId = this.getAttribute('data-product-id');
-                const user = localStorage.getItem('username');
-                if (user) {
-                    window.location.href = `chitiet.php?id=${productId}`;
-                } else {
-                    alert('Bạn cần đăng nhập để thêm sản phẩm vào giỏ.');
-                    window.location.href = './form_login.php';
-                }
-            });
-        });
+        var storedUsername = localStorage.getItem('username');
+        if (storedUsername) {
+            document.getElementById('username').value = storedUsername;
+        }
     });
-    </script>
+</script>
 </body>
 
 </html>
