@@ -69,6 +69,7 @@ header {
 .subnav {
     height: 100px;
     width: 100%;
+    z-index: 999;
     list-style-type: none;
     display: none;
     position: absolute;

@@ -18,10 +18,10 @@ class OrderService {
         $total = $product->unit_price * $quantity;
         $create_id = time(); // Sử dụng timestamp làm create_id
 
-        $order = new Order(2, $username, $total, $create_id, $productId);
+        $order = new Order(2, $username, $quantity, $total, $create_id, $productId);
 
-        $sql = "INSERT INTO orders (username, total, create_id, id_product) 
-                VALUES ('{$order->username}', '{$order->total}', '{$order->create_id}', '{$order->id_product}')";
+        $sql = "INSERT INTO orders (username,quantity, total, create_id, id_product) 
+                VALUES ('{$order->username}','{$order->quantity}', '{$order->total}', '{$order->create_id}', '{$order->id_product}')";
         return $this->db->execute($sql);
     }
 
@@ -35,6 +35,7 @@ class OrderService {
                 $order = new Order(
                     $item['id'], 
                     $item['username'], 
+                    $item['quantity'], 
                     $item['total'], 
                     $item['create_id'], 
                     $item['id_product']

@@ -26,6 +26,26 @@
     .product-detail p {
         margin: 5px 0;
     }
+
+    .quantity-controls {
+        display: flex;
+        align-items: center;
+        margin: 10px 0;
+    }
+
+    .quantity-controls button {
+        width: 30px;
+        height: 30px;
+        margin: 0 5px;
+        font-size: 18px;
+        line-height: 30px;
+        text-align: center;
+    }
+
+    .quantity-controls input {
+        width: 50px;
+        text-align: center;
+    }
     </style>
 </head>
 
@@ -40,14 +60,31 @@
         <p><?php echo $product->description; ?></p>
         <form action="?action=add_to_cart" method="post">
             <input type="hidden" name="product_id" value="<?php echo $product->id; ?>">
-            <input type="hidden" name="username" value="test_user"> <!-- Thay thế bằng tên người dùng đăng nhập -->
-            <input type="hidden" name="quantity" value="1"> <!-- Giá trị mặc định, có thể thay đổi -->
+            <input type="hidden" name="username" value="nghiep2k3"> <!-- Thay thế bằng tên người dùng đăng nhập -->
+            <div class="quantity-controls">
+                <button type="button" onclick="decreaseQuantity()">-</button>
+                <input type="number" name="quantity" id="quantity" value="1" min="1">
+                <button type="button" onclick="increaseQuantity()">+</button>
+            </div>
             <button type="submit">Thêm sản phẩm</button>
         </form>
         <?php else: ?>
         <p>Product not found</p>
         <?php endif; ?>
     </div>
+    <script>
+    function increaseQuantity() {
+        let quantityInput = document.getElementById('quantity');
+        quantityInput.value = parseInt(quantityInput.value) + 1;
+    }
+
+    function decreaseQuantity() {
+        let quantityInput = document.getElementById('quantity');
+        if (quantityInput.value > 1) {
+            quantityInput.value = parseInt(quantityInput.value) - 1;
+        }
+    }
+    </script>
 </body>
 
 </html>
