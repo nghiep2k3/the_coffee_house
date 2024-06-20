@@ -26,8 +26,14 @@ switch ($action) {
         }
         break;
     case 'add_to_cart':
-        echo '1111';
         $ProductsController->addToCart();
+        break;
+    case 'show_cart':
+        $username = 'nghiep2k3'; // Thay thế bằng tên người dùng đăng nhập thực tế
+        $ProductsController->showCart($username);
+        break;
+    case 'delete_order':
+        $ProductsController->deleteOrder();
         break;
     default:
         break;

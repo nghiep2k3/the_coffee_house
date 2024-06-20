@@ -2,6 +2,8 @@
 // services/OrderService.php
 require_once __DIR__ . '/../config/config.php';
 require_once __DIR__ . '/../models/Order.php';
+require_once __DIR__ . '/../models/Product.php';
+require_once __DIR__ . '/../services/ProductService.php';
 
 class OrderService {
     private $db;
@@ -18,32 +20,43 @@ class OrderService {
         $total = $product->unit_price * $quantity;
         $create_id = time(); // Sử dụng timestamp làm create_id
 
-        $order = new Order(2, $username, $quantity, $total, $create_id, $productId);
+        $order = new Order(null, $username, $quantity, $total, $create_id, $productId);
 
-        $sql = "INSERT INTO orders (username,quantity, total, create_id, id_product) 
-                VALUES ('{$order->username}','{$order->quantity}', '{$order->total}', '{$order->create_id}', '{$order->id_product}')";
+        $sql = "INSERT INTO orders (username, quantity, total, create_id, id_product) 
+                VALUES ('{$order->username}', '{$order->quantity}', '{$order->total}', '{$order->create_id}', '{$order->id_product}')";
         return $this->db->execute($sql);
     }
 
     public function getOrdersByUsername($username) {
-        $sql = "SELECT * FROM orders WHERE username = '{$username}'";
+        $sql = "SELECT orders.*, products.name as product_name, products.src_img as product_image, products.unit_price as product_price 
+                FROM orders 
+                JOIN products ON orders.id_product = products.id 
+                WHERE orders.username = '{$username}'";
         $this->db->execute($sql);
         $data = $this->db->getAllData();
         $orders = [];
         if ($data) {
             foreach ($data as $item) {
-                $order = new Order(
-                    $item['id'], 
-                    $item['username'], 
-                    $item['quantity'], 
-                    $item['total'], 
-                    $item['create_id'], 
-                    $item['id_product']
-                );
+                $order = [
+                    'id' => $item['id'],
+                    'username' => $item['username'],
+                    'quantity' => $item['quantity'],
+                    'total' => $item['total'],
+                    'create_id' => $item['create_id'],
+                    'id_product' => $item['id_product'],
+                    'product_name' => $item['product_name'],
+                    'product_image' => $item['product_image'],
+                    'product_price' => $item['product_price']
+                ];
                 $orders[] = $order;
             }
         }
         return $orders;
+    }
+
+    public function deleteOrder($orderId) {
+        $sql = "DELETE FROM orders WHERE id = '{$orderId}'";
+        return $this->db->execute($sql);
     }
 }
 ?>
