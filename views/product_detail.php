@@ -58,7 +58,8 @@
         <p>Quantity: <?php echo $product->quantity; ?></p>
         <p>Price: $<?php echo $product->unit_price; ?></p>
         <p><?php echo $product->description; ?></p>
-        <form action="?action=add_to_cart" method="post">
+        <form action="/the_coffee_house/routers/products_router.php" method="post">
+            <input type="hidden" name="action" value="add_to_cart">
             <input type="hidden" name="product_id" value="<?php echo $product->id; ?>">
             <input type="hidden" name="username" value="nghiep2k3"> <!-- Thay thế bằng tên người dùng đăng nhập -->
             <div class="quantity-controls">

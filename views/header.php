@@ -21,34 +21,34 @@
                         <ul class="subnav">
                             <li><a href="?action=product_list">Tất cả</a></li>
                             <li class="lv2_title"><a href="">Cà phê
-                                <ul class="menu_child_lv3">
-                                    <li class="lv3_title"><a href="">Cà phê Việt Nam</a></li>
-                                    <li class="lv3_title"><a href="">Cà phê máy</a></li>
-                                </ul>
-                            </a></li>
+                                    <ul class="menu_child_lv3">
+                                        <li class="lv3_title"><a href="">Cà phê Việt Nam</a></li>
+                                        <li class="lv3_title"><a href="">Cà phê máy</a></li>
+                                    </ul>
+                                </a></li>
                             <li class="lv2_title"><a href="">Trà
-                            <ul class="menu_child_lv3">
-                                    <li class="lv3_title"><a href="">Trà trái cây</a></li>
-                                    <li class="lv3_title"><a href="">Trà xanh</a></li>
-                                </ul>
-                            </a></li>
+                                    <ul class="menu_child_lv3">
+                                        <li class="lv3_title"><a href="">Trà trái cây</a></li>
+                                        <li class="lv3_title"><a href="">Trà xanh</a></li>
+                                    </ul>
+                                </a></li>
                             <li class="lv2_title"><a href="">Đá xay
-                            <ul class="menu_child_lv3">
-                                    <li class="lv3_title"><a href="">Đá xay Frosty</a></li>
-                                </ul>
-                            </a></li>
+                                    <ul class="menu_child_lv3">
+                                        <li class="lv3_title"><a href="">Đá xay Frosty</a></li>
+                                    </ul>
+                                </a></li>
                             <li class="lv2_title"><a href="">Sinh tố
-                            <ul class="menu_child_lv3">
-                                    <li class="lv3_title"><a href="">Sinh tố hoa quả</a></li>
-                                </ul>
-                            </a></li>
+                                    <ul class="menu_child_lv3">
+                                        <li class="lv3_title"><a href="">Sinh tố hoa quả</a></li>
+                                    </ul>
+                                </a></li>
                             <li class="lv2_title"><a href="">Bánh & Snack
-                            <ul class="menu_child_lv3">
-                                    <li class="lv3_title"><a href="">Bánh mặn</a></li>
-                                    <li class="lv3_title"><a href="">Bánh ngọt</a></li>
-                                    <li class="lv3_title"><a href="">Snack</a></li>
-                                </ul>
-                            </a></li>
+                                    <ul class="menu_child_lv3">
+                                        <li class="lv3_title"><a href="">Bánh mặn</a></li>
+                                        <li class="lv3_title"><a href="">Bánh ngọt</a></li>
+                                        <li class="lv3_title"><a href="">Snack</a></li>
+                                    </ul>
+                                </a></li>
                             <li class="lv2_title"><a href="">Thưởng thức tại nhà</a></li>
                         </ul>
                     </a></li>
@@ -58,7 +58,7 @@
                 <li class="admin-role" style="display: none;"><a href="./admin.php">Quản lý</a></li>
             </ul>
         </div>
-        <div class="header-icon">
+        <div class="header-icon" style="display: flex;">
             <i class="header-i ti-search"></i>
             <i id="user-icon" class="header-i ti-user">
                 <div id="user-dropdown" class="dropdown-content">
@@ -75,7 +75,8 @@
                     </form>
                 </div>
             </i>
-            <form action="/the_coffee_house/routers/products_router.php" method="GET" id="cart-form">
+            <form style="display: flex; align-items: center;" action="/the_coffee_house/routers/products_router.php"
+                method="GET" id="cart-form">
                 <input type="hidden" name="action" value="show_cart">
                 <i class="header-i ti-shopping-cart" onclick="document.getElementById('cart-form').submit();"></i>
             </form>

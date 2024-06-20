@@ -37,10 +37,11 @@ if ($method === 'GET') {
     }
 } elseif ($method === 'POST') {
     $action = isset($_POST['action']) ? $_POST['action'] : '';
-
+    echo "<script>alert('e');</script>";
+    
     switch ($action) {
         case 'add_to_cart':
-            echo '11';
+            echo "<script>alert('e');</script>";
             $ProductsController->addToCart();
             break;
         case 'delete_order':
