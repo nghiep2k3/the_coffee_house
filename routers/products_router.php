@@ -26,7 +26,6 @@ switch ($action) {
         break;
     case 'add_to_cart':
         $ProductsController->addToCart();
-        header('Location: ?action=list_products');
         break;
     case 'show_cart':
         $username = 'nghiep2k3'; // Thay thế bằng tên người dùng đăng nhập thực tế

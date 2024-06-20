@@ -20,7 +20,12 @@
                 <li><a class="sub" href="?action=product_list">Menu
                         <ul class="subnav">
                             <li><a href="?action=product_list">Tất cả</a></li>
-                            <li><a href="">Cà phê</a></li>
+                            <li><a href="">Cà phê
+                                <ul class="">
+                                    <li><a href="">Cà phê Việt Nam</a></li>
+                                    <li><a href="">Cà phê máy</a></li>
+                                </ul>
+                            </a></li>
                             <li><a href="">Trà</a></li>
                             <li><a href="">Cloud</a></li>
                             <li><a href="">Tea Healthy</a></li>

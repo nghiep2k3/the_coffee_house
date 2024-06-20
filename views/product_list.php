@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-    require_once __DIR__ . '/../routers/products_router.php'; 
+    // require_once __DIR__ . '/../routers/products_router.php';
 ?>
 
 <head>
