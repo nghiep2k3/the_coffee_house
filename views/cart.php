@@ -42,27 +42,29 @@
 </head>
 
 <body>
-    <h1>Shopping Cart</h1>
-    <div class="cart-items" style="display: flex; justify-content: start; flex-wrap: wrap;">
-        <?php if (!empty($orders)): ?>
-        <?php foreach ($orders as $order): ?>
-        <div class="cart-item">
-            <img src="<?php echo $order['product_image']; ?>" alt="<?php echo $order['product_name']; ?>">
-            <h2><?php echo $order['product_name']; ?></h2>
-            <p>Quantity: <?php echo $order['quantity']; ?></p>
-            <p>Price: $<?php echo $order['product_price']; ?></p>
-            <p>Total: $<?php echo $order['total']; ?></p>
-            <p>Order Date: <?php echo date('Y-m-d H:i:s', $order['create_id']); ?></p>
-            <form action="/the_coffee_house/routers/products_router.php" method="POST" style="display:inline;">
-                <input type="hidden" name="action" value="delete_order">
-                <input type="hidden" name="order_id" value="<?php echo $order['id']; ?>">
-                <button type="submit" class="delete-button">Xóa</button>
-            </form>
+    <h1 style="text-align: center;">Shopping Cart</h1>
+    <div style="display: flex; align-items: center; justify-content: center; padding: 0 68px;">
+        <div class="cart-items" style="display: flex; justify-content: start; flex-wrap: wrap;">
+            <?php if (!empty($orders)): ?>
+            <?php foreach ($orders as $order): ?>
+            <div class="cart-item">
+                <img src="<?php echo $order['product_image']; ?>" alt="<?php echo $order['product_name']; ?>">
+                <h2><?php echo $order['product_name']; ?></h2>
+                <p>Quantity: <?php echo $order['quantity']; ?></p>
+                <p>Price: $<?php echo $order['product_price']; ?></p>
+                <p>Total: $<?php echo $order['total']; ?></p>
+                <p>Order Date: <?php echo date('Y-m-d H:i:s', $order['create_id']); ?></p>
+                <form action="/the_coffee_house/routers/products_router.php" method="POST" style="display:inline;">
+                    <input type="hidden" name="action" value="delete_order">
+                    <input type="hidden" name="order_id" value="<?php echo $order['id']; ?>">
+                    <button type="submit" class="delete-button">Xóa</button>
+                </form>
+            </div>
+            <?php endforeach; ?>
+            <?php else: ?>
+            <p>No items in cart</p>
+            <?php endif; ?>
         </div>
-        <?php endforeach; ?>
-        <?php else: ?>
-        <p>No items in cart</p>
-        <?php endif; ?>
     </div>
 </body>
 
