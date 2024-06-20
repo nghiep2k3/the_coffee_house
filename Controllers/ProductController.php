@@ -14,7 +14,6 @@ class ProductController {
         $this->orderService = new OrderService();
         $this->categoryService = new CategoriesService(new Database());
     }
-
     public function list() {
         $products = $this->productService->getAllProducts();
         $categories = $this->categoryService->getAllCategories();
@@ -40,7 +39,23 @@ class ProductController {
             $quantity = $_POST['quantity'];
             
             $this->orderService->addOrder($username, $productId, $quantity);
+            header('Location: ?action=product_list');
         }
     }
+
+    public function showCart($username)
+    {
+        $orders = $this->orderService->getOrdersByUsername($username);
+        require_once __DIR__ . '/../views/cart.php';
+    }
+    public function deleteOrder() {
+        if (isset($_POST['order_id'])) {
+            $orderId = $_POST['order_id'];
+            $this->orderService->deleteOrder($orderId);
+        }
+        header('Location: /the_coffee_house/routers/products_router.php?action=show_cart');
+        exit();
+    }
+    
 }
 ?>

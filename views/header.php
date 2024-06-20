@@ -52,7 +52,10 @@
                     </form>
                 </div>
             </i>
-            <i class="header-i ti-shopping-cart"></i>
+            <form action="/the_coffee_house/routers/products_router.php" method="GET" id="cart-form">
+                <input type="hidden" name="action" value="show_cart">
+                <i class="header-i ti-shopping-cart" onclick="document.getElementById('cart-form').submit();"></i>
+            </form>
         </div>
     </header>
 
@@ -77,5 +80,3 @@
     }
     </script>
 </body>
-
-</html>
