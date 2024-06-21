@@ -87,7 +87,7 @@
                 <form style="display:inline;" action="/the_coffee_house/routers/products_router.php" method="GET"
                     id="cart-form">
                     <input type="hidden" name="action" value="delete_order">
-                    <input type="hidden" id="usernameInput" name="username" value="admin123">
+                    <input type="hidden" id="username_local" name="username" value="">
                     <input type="hidden" name="order_id" value="<?php echo $order['id']; ?>">
                     <i class="delete-button" onclick="document.getElementById('cart-form').submit();">Xóa</i>
                 </form>
@@ -99,16 +99,16 @@
             <p>No items in cart</p>
             <?php endif; ?>
         </div>
-        <!-- <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        <script>
+        document.addEventListener('DOMContentLoaded', function () {
             var usernameFromLocalStorage = localStorage.getItem("username");
             if (usernameFromLocalStorage) {
-                document.getElementById('usernameInput').value = usernameFromLocalStorage.trim();
+                document.getElementById('username_local').value = usernameFromLocalStorage.trim();
             } else {
                 console.error('No username found in LocalStorage');
             }
         });
-        </script> -->
+    </script>
     </div>
 
 </body>
