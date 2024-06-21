@@ -78,11 +78,22 @@
             <form style="display: flex; align-items: center;" action="/the_coffee_house/routers/products_router.php"
                 method="GET" id="cart-form">
                 <input type="hidden" name="action" value="show_cart">
+                <input type="hidden" id="usernameInput" name="username">
                 <i class="header-i ti-shopping-cart" onclick="document.getElementById('cart-form').submit();"></i>
             </form>
         </div>
     </header>
 
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var usernameFromLocalStorage = localStorage.getItem("username");
+        if (usernameFromLocalStorage) {
+            document.getElementById('usernameInput').value = usernameFromLocalStorage.trim();
+        } else {
+            console.error('No username found in LocalStorage');
+        }
+    });
+    </script>
     <script>
     document.getElementById("user-icon").addEventListener("click", function() {
         var dropdown = document.getElementById("user-dropdown");
@@ -100,25 +111,5 @@
             }
         }
     }
-    document.getElementById('login-form').addEventListener('submit', function(event) {
-            event.preventDefault();
-            var form = event.target;
-            var formData = new FormData(form);
-            fetch(form.action, {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    localStorage.setItem('username', data.username);
-                    alert('Login successful!');
-                    window.location.href = "/the_coffee_house/index.php";
-                } else {
-                    alert('Login failed: ' + data.message);
-                }
-            })
-            .catch(error => console.error('Error:', error));
-        });
     </script>
 </body>

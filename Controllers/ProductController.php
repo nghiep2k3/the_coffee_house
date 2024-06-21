@@ -42,18 +42,50 @@ class ProductController {
         }
     }
 
+    
+
     public function showCart($username)
     {
         $orders = $this->orderService->getOrdersByUsername($username);
         require_once __DIR__ . '/../views/cart.php';
     }
-    public function deleteOrder() {
-        if (isset($_POST['order_id'])) {
-            $orderId = $_POST['order_id'];
+
+    public function deleteOrder($user) {
+        // if (isset($_POST['order_id'])) {
+        //     $orderId = $_POST['order_id'];
+        //     $this->orderService->deleteOrder($orderId);
+        // }
+        if (isset($_GET['order_id'])) {
+            $orderId = $_GET['order_id'];
             $this->orderService->deleteOrder($orderId);
         }
-        header('Location: /the_coffee_house/routers/products_router.php?action=show_cart');
+        header("Location: /the_coffee_house/routers/products_router.php?action=show_cart&username={$user}");
         exit();
+    }
+
+    public function checkout($username) {
+        // Hiển thị trang thanh toán
+        // header("Location: /the_coffee_house/views/checkout.php");
+        $orders = $this->orderService->getOrdersByUsername($username);
+        require_once __DIR__ . '/../views/checkout.php';
+        exit();
+    }
+    
+    public function processPayment() {
+        // Xử lý thanh toán ở đây
+        $fullname = isset($_POST['fullname']) ? $_POST['fullname'] : '';
+        $phone = isset($_POST['phone']) ? $_POST['phone'] : '';
+        $address = isset($_POST['address']) ? $_POST['address'] : '';
+        $totalAmount = isset($_POST['totalAmount']) ? $_POST['totalAmount'] : '';
+        $productCount = isset($_POST['productCount']) ? $_POST['productCount'] : '';
+
+        // Ở đây bạn có thể thực hiện các xử lý lưu thông tin thanh toán vào cơ sở dữ liệu,
+        // gửi email thông báo, v.v...
+
+        // Sau khi xử lý, có thể chuyển hướng người dùng đến trang hoàn thành thanh toán
+        // hoặc trang chủ với thông báo thanh toán thành công.
+        header("Location: /the_coffee_house/index.php");
+        exit;
     }
     
 }

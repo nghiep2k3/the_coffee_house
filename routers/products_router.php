@@ -7,6 +7,7 @@ require_once __DIR__ . '/../controllers/CategoriesController.php';
 
 $ProductsController = new ProductController();
 $CategoriesController = new CategoriesController();
+$username = isset($_GET['username']) ? trim($_GET['username']) : '';
 
 $method = $_SERVER['REQUEST_METHOD'];
 
@@ -29,27 +30,33 @@ if ($method === 'GET') {
             }
             break;
         case 'show_cart':
-            echo '<script>';
-            echo 'var usernameFromLocalStorage = localStorage.getItem("username");';
-            echo '</script>';
-            $username = '<script>document.write(usernameFromLocalStorage);</script>'; 
-            $ProductsController->showCart($username);
+            if (!empty($username)) {
+                $ProductsController->showCart($username);
+            }
+            break;
+        case 'delete_order':
+            if (!empty($username)) {
+                $ProductsController->deleteOrder($username);
+            }
+            break;
+        case 'checkout':
+            if (!empty($username)) {
+                $ProductsController->checkout($username);
+            }
             break;
         default:
             break;
     }
 } elseif ($method === 'POST') {
     $action = isset($_POST['action']) ? $_POST['action'] : '';
-    echo "<script>alert('e');</script>";
-    
+    $user = isset($_POST['user']) ? trim($_POST['user']) : '';
     switch ($action) {
         case 'add_to_cart':
-            echo "<script>alert('e');</script>";
             $ProductsController->addToCart();
             break;
-        case 'delete_order':
-            $ProductsController->deleteOrder();
-            break;
+        // case 'delete_order':
+        //     $ProductsController->deleteOrder('vinhmom123');
+        //     break;
         default:
             break;
     }
