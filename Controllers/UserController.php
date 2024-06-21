@@ -11,7 +11,10 @@ class UserController {
         $user = $this->userService->getUser($username, $password);
         if ($user) {
             $_SESSION['user'] = $user;
-            return true;
+            return [
+                'username' => $user->username,
+                'role' => $user->role
+            ];
         } else {
             return false;
         }

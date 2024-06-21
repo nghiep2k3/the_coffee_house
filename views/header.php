@@ -55,7 +55,10 @@
                 <li><a href="">Giới thiệu</a></li>
                 <li><a href="">Shop</a></li>
                 <li><a href=""></a></li>
-                <li class="admin-role" style="display: none;"><a href="./admin.php">Quản lý</a></li>
+                <form action="/the_coffee_house/routers/router.php" method="get" style="display: inline;">
+                        <input type="hidden" name="action" value="admin">
+                        <button class="button" type="submit" style= "margin-top: 17px">Quản lý</button>
+                    </form>
             </ul>
         </div>
         <div class="header-icon" style="display: flex;">
@@ -63,15 +66,30 @@
             <i id="user-icon" class="header-i ti-user">
                 <div id="user-dropdown" class="dropdown-content">
                     <form action="/the_coffee_house/routers/router.php" method="GET" id="user-log">
-                        <button class="button login" id="login-button" type="submit" name="action" value="login">
-                            <span class="button-content">Đăng nhập</span>
-                        </button>
-                        <button class="button login" id="register-button" type="submit" name="action" value="register">
-                            <span class="button-content">Đăng ký</span>
-                        </button>
-                        <button style="display: none;" class="button login" id="logout" type="submit" name="action">
-                            <span class="button-content">Đăng xuất</span>
-                        </button>
+                        <?php
+                        if (isset($_SESSION['username'])) {
+                            echo '<span>Xin chào, ' . $_SESSION['username'] . '</span>';
+                            echo '<button style="display: none;" class="button login" id="login-button" type="submit" name="action" value="login">';
+                            echo '<span class="button-content">Đăng nhập</span>';
+                            echo '</button>';
+                            echo '<button style="display: none;" class="button login" id="register-button" type="submit" name="action" value="register">';
+                            echo '<span class="button-content">Đăng ký</span>';
+                            echo '</button>';
+                            echo '<button class="button login" id="logout" type="submit" name="action" value="logout">';
+                            echo '<span class="button-content">Đăng xuất</span>';
+                            echo '</button>';
+                        } else {
+                            echo '<button class="button login" id="login-button" type="submit" name="action" value="login">';
+                            echo '<span class="button-content">Đăng nhập</span>';
+                            echo '</button>';
+                            echo '<button class="button login" id="register-button" type="submit" name="action" value="register">';
+                            echo '<span class="button-content">Đăng ký</span>';
+                            echo '</button>';
+                            echo '<button style="display: none;" class="button login" id="logout" type="submit" name="action">';
+                            echo '<span class="button-content">Đăng xuất</span>';
+                            echo '</button>';
+                        }
+                        ?>
                     </form>
                 </div>
             </i>
@@ -84,41 +102,49 @@
     </header>
 
     <script>
-    document.getElementById("user-icon").addEventListener("click", function() {
-        var dropdown = document.getElementById("user-dropdown");
-        if (dropdown.style.display === "none" || dropdown.style.display === "") {
-            dropdown.style.display = "block";
-        } else {
-            dropdown.style.display = "none";
-        }
-    });
-    window.onclick = function(event) {
-        if (!event.target.matches('#user-icon') && !event.target.closest('#user-dropdown')) {
+        document.getElementById("user-icon").addEventListener("click", function() {
             var dropdown = document.getElementById("user-dropdown");
-            if (dropdown.style.display === "block") {
+            if (dropdown.style.display === "none" || dropdown.style.display === "") {
+                dropdown.style.display = "block";
+            } else {
                 dropdown.style.display = "none";
             }
-        }
-    }
-    document.getElementById('login-form').addEventListener('submit', function(event) {
-            event.preventDefault();
-            var form = event.target;
-            var formData = new FormData(form);
-            fetch(form.action, {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    localStorage.setItem('username', data.username);
-                    alert('Login successful!');
-                    window.location.href = "/the_coffee_house/index.php";
-                } else {
-                    alert('Login failed: ' + data.message);
+        });
+        window.onclick = function(event) {
+            if (!event.target.matches('#user-icon') && !event.target.closest('#user-dropdown')) {
+                var dropdown = document.getElementById("user-dropdown");
+                if (dropdown.style.display === "block") {
+                    dropdown.style.display = "none";
                 }
-            })
-            .catch(error => console.error('Error:', error));
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var storedUsername = localStorage.getItem('username');
+            var storedRole = localStorage.getItem('role');
+            if (storedUsername) {
+                document.getElementById("login-button").style.display = "none";
+                document.getElementById("register-button").style.display = "none";
+                document.getElementById("logout").style.display = "inline-block";
+                var usernameSpan = document.createElement("span");
+                usernameSpan.textContent = "Xin chào, " + storedUsername;
+                usernameSpan.style.fontSize = "14px";
+                document.getElementById("user-icon").appendChild(usernameSpan);
+
+                // Kiểm tra vai trò của người dùng
+                if (storedRole === 'admin') {
+                    document.querySelector('.admin-role').style.display = 'inline-block';
+                }
+            }
+        });
+
+        document.getElementById("logout").addEventListener("click", function(event) {
+            event.preventDefault();
+            localStorage.removeItem('username');
+            localStorage.removeItem('role');
+            window.location.href = '/the_coffee_house';
         });
     </script>
 </body>
+
+</html>

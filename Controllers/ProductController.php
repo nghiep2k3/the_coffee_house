@@ -29,9 +29,6 @@ class ProductController {
         $categories = $this->categoryService->getAllCategories();
         require __DIR__ . '/../views/product_list.php';
     }
-    // public function getProductsByCategory($categoryId) {
-    //     return $this->productService->getProductsByCategory($categoryId);
-    // }
     public function addToCart() {
         if (isset($_POST['product_id']) && isset($_POST['username']) && isset($_POST['quantity'])) {
             $productId = $_POST['product_id'];
@@ -41,7 +38,16 @@ class ProductController {
             header('Location: ../index.php?action=product_list');
         }
     }
-
+    public function addProduct() {
+        $name = $_POST['product_name'];
+        $price = $_POST['product_price'];
+        $quantity = $_POST['quantity'];
+        $description = $_POST['description'];
+        $image = $_POST['image'];
+        $category = $_POST['category_id'];
+        $this->productService->addProduct($name, $price, $quantity, $description, $image,$category);
+        header('Location: /the_coffee_house/views/admin.php');
+    }
     public function showCart($username)
     {
         $orders = $this->orderService->getOrdersByUsername($username);
