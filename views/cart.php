@@ -69,7 +69,7 @@
                 style="color: red;"><?php echo number_format($totalAmount, 0, ',', '.'); ?></span> VNĐ</p>
         <form style="display:inline;" action="/the_coffee_house/routers/products_router.php" method="GET" id="payments">
             <input type="hidden" name="action" value="checkout">
-            <input type="hidden" id="usernameInput" name="username">
+            <input type="hidden" id="username_local" name="username">
             <i class="delete-button" onclick="document.getElementById('payments').submit();">Thanh toán</i>
         </form>
     </div>
@@ -87,7 +87,7 @@
                 <form style="display:inline;" action="/the_coffee_house/routers/products_router.php" method="GET"
                     id="cart-form">
                     <input type="hidden" name="action" value="delete_order">
-                    <input type="hidden" id="username_local" name="username" value="">
+                    <input type="hidden" id="username_delete" name="username" value="">
                     <input type="hidden" name="order_id" value="<?php echo $order['id']; ?>">
                     <i class="delete-button" onclick="document.getElementById('cart-form').submit();">Xóa</i>
                 </form>
@@ -104,6 +104,14 @@
             var usernameFromLocalStorage = localStorage.getItem("username");
             if (usernameFromLocalStorage) {
                 document.getElementById('username_local').value = usernameFromLocalStorage.trim();
+            } else {
+                console.error('No username found in LocalStorage');
+            }
+        });
+        document.addEventListener('DOMContentLoaded', function () {
+            var usernameFromLocalStorage = localStorage.getItem("username");
+            if (usernameFromLocalStorage) {
+                document.getElementById('username_delete').value = usernameFromLocalStorage.trim();
             } else {
                 console.error('No username found in LocalStorage');
             }
