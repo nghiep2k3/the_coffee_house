@@ -25,7 +25,7 @@
             <button onclick="showProductForm()">Thêm sản phẩm mới</button>
             <div id="product-form" style="display: none;">
                 <h3 id="product-form-title">Thêm sản phẩm</h3>
-                <form id="add-product-form" method="post" action="/the_coffee_house/routers/products_router.php">
+                <form id="add-product-form" method="post" action="/the_coffee_house/routers/admin_router.php">
                     <input type="hidden" name="action" value="add_product">
                     <label for="product-name">Tên sản phẩm:</label>
                     <input type="text" id="product-name" name="product_name" required>

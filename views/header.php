@@ -56,9 +56,9 @@
                 <li><a href="">Shop</a></li>
                 <li><a href=""></a></li>
                 <form action="/the_coffee_house/routers/router.php" method="get" style="display: inline;">
-                        <input type="hidden" name="action" value="admin">
-                        <button class="button" type="submit" style= "margin-top: 17px">Quản lý</button>
-                    </form>
+                    <input type="hidden" name="action" value="admin">
+                    <button class="button" type="submit" style="margin-top: 17px">Quản lý</button>
+                </form>
             </ul>
         </div>
         <div class="header-icon" style="display: flex;">
@@ -96,13 +96,24 @@
             <form style="display: flex; align-items: center;" action="/the_coffee_house/routers/products_router.php"
                 method="GET" id="cart-form">
                 <input type="hidden" name="action" value="show_cart">
+                <input type="hidden" id="usernameInput" name="username" value="d">
                 <i class="header-i ti-shopping-cart" onclick="document.getElementById('cart-form').submit();"></i>
             </form>
         </div>
     </header>
 
     <script>
-        document.getElementById("user-icon").addEventListener("click", function() {
+        document.addEventListener('DOMContentLoaded', function () {
+            var usernameFromLocalStorage = localStorage.getItem("username");
+            if (usernameFromLocalStorage) {
+                document.getElementById('usernameInput').value = usernameFromLocalStorage.trim();
+            } else {
+                console.error('No username found in LocalStorage');
+            }
+        });
+    </script>
+    <script>
+        document.getElementById("user-icon").addEventListener("click", function () {
             var dropdown = document.getElementById("user-dropdown");
             if (dropdown.style.display === "none" || dropdown.style.display === "") {
                 dropdown.style.display = "block";
@@ -110,40 +121,16 @@
                 dropdown.style.display = "none";
             }
         });
-        window.onclick = function(event) {
+        window.onclick = function (event) {
             if (!event.target.matches('#user-icon') && !event.target.closest('#user-dropdown')) {
                 var dropdown = document.getElementById("user-dropdown");
-                if (dropdown.style.display === "block") {
+                if (dropdown.style.display === "none" || dropdown.style.display === "") {
+                    dropdown.style.display = "block";
+                } else {
                     dropdown.style.display = "none";
                 }
             }
         }
-
-        document.addEventListener('DOMContentLoaded', function() {
-            var storedUsername = localStorage.getItem('username');
-            var storedRole = localStorage.getItem('role');
-            if (storedUsername) {
-                document.getElementById("login-button").style.display = "none";
-                document.getElementById("register-button").style.display = "none";
-                document.getElementById("logout").style.display = "inline-block";
-                var usernameSpan = document.createElement("span");
-                usernameSpan.textContent = "Xin chào, " + storedUsername;
-                usernameSpan.style.fontSize = "14px";
-                document.getElementById("user-icon").appendChild(usernameSpan);
-
-                // Kiểm tra vai trò của người dùng
-                if (storedRole === 'admin') {
-                    document.querySelector('.admin-role').style.display = 'inline-block';
-                }
-            }
-        });
-
-        document.getElementById("logout").addEventListener("click", function(event) {
-            event.preventDefault();
-            localStorage.removeItem('username');
-            localStorage.removeItem('role');
-            window.location.href = '/the_coffee_house';
-        });
     </script>
 </body>
 

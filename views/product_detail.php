@@ -9,28 +9,28 @@
 <body>
     <div class="product-detail">
         <?php if (!empty($product)): ?>
-        <div class="product-img">
-            <img src="<?php echo $product->src_img; ?>" alt="<?php echo $product->name; ?>">
-        </div>
-        <div class="product-information">
-            <h2><?php echo $product->name; ?></h2>
-            <p class="product-price">Price: $<?php echo $product->unit_price; ?></p>
-            <p class="infor">Quantity: <?php echo $product->quantity; ?></p>
-            <span>Mô tả sản phẩm:</span>
-            <p class="infor"><?php echo $product->description; ?></p>
-            <form action="/the_coffee_house/routers/products_router.php" method="post">
-                <input type="hidden" name="action" value="add_to_cart">
-                <input type="hidden" name="product_id" value="<?php echo $product->id; ?>">
-                <input type="hidden" id="username" name="username" value="">
-                <div class="quantity-controls">
-                    <button type="button" onclick="decreaseQuantity()">-</button>
-                    <input type="number" name="quantity" id="quantity" value="1" min="1">
-                    <button type="button" onclick="increaseQuantity()">+</button>
-                </div>
-                <button class="button-add" type="submit">Thêm sản phẩm</button>
-            </form>
+            <div class="product-img">
+                <img src="<?php echo $product->src_img; ?>" alt="<?php echo $product->name; ?>">
+            </div>
+            <div class="product-information">
+                <h2><?php echo $product->name; ?></h2>
+                <p class="product-price">Price: $<?php echo $product->unit_price; ?></p>
+                <p class="infor">Quantity: <?php echo $product->quantity; ?></p>
+                <span>Mô tả sản phẩm:</span>
+                <p class="infor"><?php echo $product->description; ?></p>
+                <form action="/the_coffee_house/routers/products_router.php" method="post">
+                    <input type="hidden" name="action" value="add_to_cart">
+                    <input type="hidden" name="product_id" value="<?php echo $product->id; ?>">
+                    <input type="hidden" id="username" name="username" value="">
+                    <div class="quantity-controls">
+                        <button type="button" onclick="decreaseQuantity()">-</button>
+                        <input type="number" name="quantity" id="quantity" value="1" min="1">
+                        <button type="button" onclick="increaseQuantity()">+</button>
+                    </div>
+                    <button class="button-add" type="submit">Thêm sản phẩm</button>
+                </form>
             <?php else: ?>
-            <p>Product not found</p>
+                <p>Product not found</p>
             <?php endif; ?>
         </div>
     </div>
@@ -100,23 +100,24 @@
             </div>
     </div>
     <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var storedUsername = localStorage.getItem('username');
-        if (storedUsername) {
-            document.getElementById('username').value = storedUsername;
-        }
-    });
-    function increaseQuantity() {
-        let quantityInput = document.getElementById('quantity');
-        quantityInput.value = parseInt(quantityInput.value) + 1;
-    }
+        document.addEventListener('DOMContentLoaded', function () {
+            var storedUsername = localStorage.getItem('username');
+            if (storedUsername) {
+                document.getElementById('username').value = storedUsername;
+            }
+        });
 
-    function decreaseQuantity() {
-        let quantityInput = document.getElementById('quantity');
-        if (quantityInput.value > 1) {
-            quantityInput.value = parseInt(quantityInput.value) - 1;
+        function increaseQuantity() {
+            let quantityInput = document.getElementById('quantity');
+            quantityInput.value = parseInt(quantityInput.value) + 1;
         }
-    }
+
+        function decreaseQuantity() {
+            let quantityInput = document.getElementById('quantity');
+            if (quantityInput.value > 1) {
+                quantityInput.value = parseInt(quantityInput.value) - 1;
+            }
+        }
     </script>
 </body>
 </html>

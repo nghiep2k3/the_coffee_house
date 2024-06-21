@@ -24,26 +24,6 @@ if ($method === 'GET') {
                 $CategoriesController->getAllCategories();
             }
             break;
-        case 'view_product':
-            if (isset($_GET['id'])) {
-                $ProductsController->view($_GET['id']);
-            }
-            break;
-        case 'show_cart':
-            if (!empty($username)) {
-                $ProductsController->showCart($username);
-            }
-            break;
-        case 'delete_order':
-            if (!empty($username)) {
-                $ProductsController->deleteOrder($username);
-            }
-            break;
-        case 'checkout':
-            if (!empty($username)) {
-                $ProductsController->checkout($username);
-            }
-            break;
         default:
             break;
     }
@@ -51,11 +31,9 @@ if ($method === 'GET') {
     $action = isset($_POST['action']) ? $_POST['action'] : '';
     $user = isset($_POST['user']) ? trim($_POST['user']) : '';
     switch ($action) {
-        case 'add_to_cart':
-            $ProductsController->addToCart();
-        // case 'delete_order':
-        //     $ProductsController->deleteOrder('vinhmom123');
-        //     break;
+        case 'add_product':
+            $ProductsController->addProduct();
+            break;
         default:
             break;
     }

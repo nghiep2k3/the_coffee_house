@@ -48,14 +48,14 @@
             </div>
         </div>
     </div>
-<script>
+    <script>
     document.addEventListener('DOMContentLoaded', function() {
         var storedUsername = localStorage.getItem('username');
         if (storedUsername) {
             document.getElementById('username').value = storedUsername;
         }
     });
-</script>
+    </script>
 </body>
 
 </html>
