@@ -6,7 +6,6 @@
     <title>Product Detail</title>
     <link rel="stylesheet" href="./css/product_detail.css">
 </head>
-
 <body>
     <div class="product-detail">
         <?php if (!empty($product)): ?>
@@ -107,7 +106,6 @@
             document.getElementById('username').value = storedUsername;
         }
     });
-
     function increaseQuantity() {
         let quantityInput = document.getElementById('quantity');
         quantityInput.value = parseInt(quantityInput.value) + 1;
@@ -121,5 +119,4 @@
     }
     </script>
 </body>
-
 </html>

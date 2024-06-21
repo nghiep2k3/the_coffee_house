@@ -18,4 +18,6 @@ $action = isset($_GET['action']) ? $_GET['action'] : '';?>
 </div>
 <?php
     require_once __DIR__ . '/routers/products_router.php';
+    require_once __DIR__ . '/views/footer.php';
+    
 ?>
