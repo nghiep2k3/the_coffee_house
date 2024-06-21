@@ -5,7 +5,6 @@ define('BASE_URL', '/the_coffee_house');
 require_once __DIR__ . '/../config/config.php';
 require_once __DIR__ . '/../services/UserService.php';
 require_once __DIR__ . '/../controllers/UserController.php';   
-
 $database = new Database();
 $userService = new UserService($database);
 $userController = new UserController($userService);
@@ -17,6 +16,9 @@ switch ($action) {
     case 'register':
         handleRegister($userController);
         break;
+    case 'admin';
+        require __DIR__ . '/../views/admin.php';
+        break;
     default:
         require __DIR__ . '/../views/login.php';
         break;
@@ -25,9 +27,12 @@ function handleLogin($userController) {
     if ($_SERVER['REQUEST_METHOD'] === 'POST' ) {
         $username = $_POST['username'];
         $password = $_POST['password'];
-        if ($userController->login($username, $password)) {
+        $loginResult = $userController->login($username, $password);
+        if ($loginResult) {
+            $role = $loginResult['role'];
             echo '<script>';
             echo 'localStorage.setItem("username", "' . $username . '");';
+            echo 'localStorage.setItem("role", "' . $role . '");';
             echo 'setTimeout(function() {';
             echo '  window.location.href = "' . BASE_URL . '/index.php";';
             echo '}, 2000);'; 

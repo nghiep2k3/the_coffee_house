@@ -53,6 +53,8 @@ if ($method === 'GET') {
     switch ($action) {
         case 'add_to_cart':
             $ProductsController->addToCart();
+        case 'add_product':
+            $ProductsController->addProduct();
             break;
         // case 'delete_order':
         //     $ProductsController->deleteOrder('vinhmom123');

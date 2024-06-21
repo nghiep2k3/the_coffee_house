@@ -55,7 +55,10 @@
                 <li><a href="">Giới thiệu</a></li>
                 <li><a href="">Shop</a></li>
                 <li><a href=""></a></li>
-                <li class="admin-role" style="display: none;"><a href="./admin.php">Quản lý</a></li>
+                <form action="/the_coffee_house/routers/router.php" method="get" style="display: inline;">
+                    <input type="hidden" name="action" value="admin">
+                    <button class="button" type="submit" style="margin-top: 17px">Quản lý</button>
+                </form>
             </ul>
         </div>
         <div class="header-icon" style="display: flex;">
@@ -63,53 +66,72 @@
             <i id="user-icon" class="header-i ti-user">
                 <div id="user-dropdown" class="dropdown-content">
                     <form action="/the_coffee_house/routers/router.php" method="GET" id="user-log">
-                        <button class="button login" id="login-button" type="submit" name="action" value="login">
-                            <span class="button-content">Đăng nhập</span>
-                        </button>
-                        <button class="button login" id="register-button" type="submit" name="action" value="register">
-                            <span class="button-content">Đăng ký</span>
-                        </button>
-                        <button style="display: none;" class="button login" id="logout" type="submit" name="action">
-                            <span class="button-content">Đăng xuất</span>
-                        </button>
+                        <?php
+                        if (isset($_SESSION['username'])) {
+                            echo '<span>Xin chào, ' . $_SESSION['username'] . '</span>';
+                            echo '<button style="display: none;" class="button login" id="login-button" type="submit" name="action" value="login">';
+                            echo '<span class="button-content">Đăng nhập</span>';
+                            echo '</button>';
+                            echo '<button style="display: none;" class="button login" id="register-button" type="submit" name="action" value="register">';
+                            echo '<span class="button-content">Đăng ký</span>';
+                            echo '</button>';
+                            echo '<button class="button login" id="logout" type="submit" name="action" value="logout">';
+                            echo '<span class="button-content">Đăng xuất</span>';
+                            echo '</button>';
+                        } else {
+                            echo '<button class="button login" id="login-button" type="submit" name="action" value="login">';
+                            echo '<span class="button-content">Đăng nhập</span>';
+                            echo '</button>';
+                            echo '<button class="button login" id="register-button" type="submit" name="action" value="register">';
+                            echo '<span class="button-content">Đăng ký</span>';
+                            echo '</button>';
+                            echo '<button style="display: none;" class="button login" id="logout" type="submit" name="action">';
+                            echo '<span class="button-content">Đăng xuất</span>';
+                            echo '</button>';
+                        }
+                        ?>
                     </form>
                 </div>
             </i>
             <form style="display: flex; align-items: center;" action="/the_coffee_house/routers/products_router.php"
                 method="GET" id="cart-form">
                 <input type="hidden" name="action" value="show_cart">
-                <input type="hidden" id="usernameInput" name="username">
+                <input type="hidden" id="usernameInput" name="username" value="d">
                 <i class="header-i ti-shopping-cart" onclick="document.getElementById('cart-form').submit();"></i>
             </form>
         </div>
     </header>
 
     <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var usernameFromLocalStorage = localStorage.getItem("username");
-        if (usernameFromLocalStorage) {
-            document.getElementById('usernameInput').value = usernameFromLocalStorage.trim();
-        } else {
-            console.error('No username found in LocalStorage');
-        }
-    });
+        document.addEventListener('DOMContentLoaded', function () {
+            var usernameFromLocalStorage = localStorage.getItem("username");
+            if (usernameFromLocalStorage) {
+                document.getElementById('usernameInput').value = usernameFromLocalStorage.trim();
+            } else {
+                console.error('No username found in LocalStorage');
+            }
+        });
     </script>
     <script>
-    document.getElementById("user-icon").addEventListener("click", function() {
-        var dropdown = document.getElementById("user-dropdown");
-        if (dropdown.style.display === "none" || dropdown.style.display === "") {
-            dropdown.style.display = "block";
-        } else {
-            dropdown.style.display = "none";
-        }
-    });
-    window.onclick = function(event) {
-        if (!event.target.matches('#user-icon') && !event.target.closest('#user-dropdown')) {
+        document.getElementById("user-icon").addEventListener("click", function () {
             var dropdown = document.getElementById("user-dropdown");
-            if (dropdown.style.display === "block") {
+            if (dropdown.style.display === "none" || dropdown.style.display === "") {
+                dropdown.style.display = "block";
+            } else {
                 dropdown.style.display = "none";
             }
+        });
+        window.onclick = function (event) {
+            if (!event.target.matches('#user-icon') && !event.target.closest('#user-dropdown')) {
+                var dropdown = document.getElementById("user-dropdown");
+                if (dropdown.style.display === "none" || dropdown.style.display === "") {
+                    dropdown.style.display = "block";
+                } else {
+                    dropdown.style.display = "none";
+                }
+            }
         }
-    }
     </script>
 </body>
+
+</html>

@@ -21,7 +21,8 @@ class ProductService {
                     $item['quantity'], 
                     $item['unit_price'], 
                     $item['description'], 
-                    $item['src_img']
+                    $item['src_img'],
+                    $item['idCategory']
                 );
                 $products[] = $product;
             }
@@ -40,7 +41,8 @@ class ProductService {
                 $item['quantity'], 
                 $item['unit_price'], 
                 $item['description'], 
-                $item['src_img']
+                $item['src_img'],
+                $item['idCategory']
             );
         }
         return null;
@@ -61,11 +63,23 @@ class ProductService {
                     $item['quantity'], 
                     $item['unit_price'], 
                     $item['description'], 
-                    $item['src_img']
+                    $item['src_img'],
+                    $item['idCategory']
                 );
                 $products[] = $product;
             }
         }
         return $products;
+    }
+    public function addProduct($name, $price, $quantity, $description, $image, $category) {
+        $product = new Product(null, $name, $quantity, $price, $description, $image, $category);
+        $sql = ("INSERT INTO products (`name`, unit_price, quantity, `description`,src_img, idCategory)
+         VALUES ('$product->name','$product->unit_price', '$product->quantity', '$product->description', '$product->src_img','$product->IdCategory')");
+        $result = $this->db->execute($sql);
+        if ($result) {
+            return "Thêm thành công";
+        } else {
+            return "Error: " . $result->error;
+        }
     }
 }
