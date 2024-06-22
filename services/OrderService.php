@@ -3,17 +3,21 @@
 require_once __DIR__ . '/../config/config.php';
 require_once __DIR__ . '/../models/Order.php';
 require_once __DIR__ . '/../models/Product.php';
+require_once __DIR__ . '/../models/Bill.php';
 require_once __DIR__ . '/../services/ProductService.php';
 
-class OrderService {
+class OrderService
+{
     private $db;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->db = new Database();
         $this->db->connect();
     }
 
-    public function addOrder($username, $productId, $quantity) {
+    public function addOrder($username, $productId, $quantity)
+    {
         // Giả sử tổng tiền là giá sản phẩm nhân với số lượng
         $productService = new ProductService();
         $product = $productService->getProductById($productId);
@@ -27,7 +31,23 @@ class OrderService {
         return $this->db->execute($sql);
     }
 
-    public function getOrdersByUsername($username) {
+    public function addBills($username, $tel, $address, $total_item, $money)
+    {
+        echo "Username: " . $username;
+        echo "Tel: " . $tel;
+        echo "Address: " . $address;
+        echo "Total Item: " . $total_item;
+        echo "Money: " . $money;
+
+        $order = new Bill(null, $username, $tel, $address, $total_item, $money);
+
+        $sql = "INSERT INTO bills (`username`, `tel`, `address`, `total_item`, `money`) 
+                VALUES ('{$order->username}', '{$order->tel}', '{$order->address}', '{$order->total_item}', '{$order->money}')";
+        return $this->db->execute($sql);
+    }
+
+    public function getOrdersByUsername($username)
+    {
         $sql = "SELECT orders.*, products.name as product_name, products.src_img as product_image, products.unit_price as product_price 
                 FROM orders 
                 JOIN products ON orders.id_product = products.id 
@@ -54,11 +74,12 @@ class OrderService {
         return $orders;
     }
 
-    public function deleteOrder($orderId) {
+    public function deleteOrder($orderId)
+    {
         $sql = "DELETE FROM orders WHERE id = '{$orderId}'";
         return $this->db->execute($sql);
     }
 
-    
+
 }
 ?>

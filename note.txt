@@ -40,3 +40,23 @@ echo __DIR__.'/controllers/ProductController.php';
  $controller->list();
  echo __DIR__.'/controllers/ProductController.php';
  ?>
+
+
+ <form style="display: flex; align-items: center;" action="/the_coffee_house/routers/products_router.php"
+                method="GET" id="cart-form">
+                <input type="hidden" name="action" value="show_cart">
+                <input type="hidden" id="usernameInput" name="username" value="d">
+                <i class="header-i ti-shopping-cart" onclick="document.getElementById('cart-form').submit();"></i>
+            </form>
+
+
+            <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var usernameFromLocalStorage = localStorage.getItem("username");
+            if (usernameFromLocalStorage) {
+                document.getElementById('usernameInput').value = usernameFromLocalStorage.trim();
+            } else {
+                console.error('No username found in LocalStorage');
+            }
+        });
+    </script>

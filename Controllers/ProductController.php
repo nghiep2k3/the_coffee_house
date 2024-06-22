@@ -84,14 +84,15 @@ class ProductController {
         $phone = isset($_POST['phone']) ? $_POST['phone'] : '';
         $address = isset($_POST['address']) ? $_POST['address'] : '';
         $totalAmount = isset($_POST['totalAmount']) ? $_POST['totalAmount'] : '';
-        $productCount = isset($_POST['productCount']) ? $_POST['productCount'] : '';
+        $totalQuantity = isset($_POST['totalQuantity']) ? $_POST['totalQuantity'] : '';
+        // echo $fullname;
+        // echo $phone;
+        // echo $address;
+        // echo $totalAmount;
+        // echo $totalQuantity;
 
-        // Ở đây bạn có thể thực hiện các xử lý lưu thông tin thanh toán vào cơ sở dữ liệu,
-        // gửi email thông báo, v.v...
-
-        // Sau khi xử lý, có thể chuyển hướng người dùng đến trang hoàn thành thanh toán
-        // hoặc trang chủ với thông báo thanh toán thành công.
-        header("Location: /the_coffee_house/index.php");
+        $this->orderService->addBills($fullname,$phone, $address, $totalQuantity, $totalAmount);
+        // header("Location: /the_coffee_house/index.php");
         exit;
     }
     

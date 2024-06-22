@@ -103,34 +103,58 @@
     </header>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            var usernameFromLocalStorage = localStorage.getItem("username");
-            if (usernameFromLocalStorage) {
-                document.getElementById('usernameInput').value = usernameFromLocalStorage.trim();
-            } else {
-                console.error('No username found in LocalStorage');
-            }
-        });
+    document.addEventListener('DOMContentLoaded', function() {
+        var usernameFromLocalStorage = localStorage.getItem("username");
+        if (usernameFromLocalStorage) {
+            document.getElementById('usernameInput').value = usernameFromLocalStorage.trim();
+        } else {
+            console.error('No username found in LocalStorage');
+        }
+    });
     </script>
     <script>
-        document.getElementById("user-icon").addEventListener("click", function () {
+    document.getElementById("user-icon").addEventListener("click", function() {
+        var dropdown = document.getElementById("user-dropdown");
+        if (dropdown.style.display === "none" || dropdown.style.display === "") {
+            dropdown.style.display = "block";
+        } else {
+            dropdown.style.display = "none";
+        }
+    });
+    window.onclick = function(event) {
+        if (!event.target.matches('#user-icon') && !event.target.closest('#user-dropdown')) {
             var dropdown = document.getElementById("user-dropdown");
-            if (dropdown.style.display === "none" || dropdown.style.display === "") {
-                dropdown.style.display = "block";
-            } else {
+            if (dropdown.style.display === "block") {
                 dropdown.style.display = "none";
             }
-        });
-        window.onclick = function (event) {
-            if (!event.target.matches('#user-icon') && !event.target.closest('#user-dropdown')) {
-                var dropdown = document.getElementById("user-dropdown");
-                if (dropdown.style.display === "none" || dropdown.style.display === "") {
-                    dropdown.style.display = "block";
-                } else {
-                    dropdown.style.display = "none";
-                }
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        var storedUsername = localStorage.getItem('username');
+        var storedRole = localStorage.getItem('role');
+        if (storedUsername) {
+            document.getElementById("login-button").style.display = "none";
+            document.getElementById("register-button").style.display = "none";
+            document.getElementById("logout").style.display = "inline-block";
+            var usernameSpan = document.createElement("span");
+            usernameSpan.textContent = "Xin chào, " + storedUsername;
+            usernameSpan.style.fontSize = "14px";
+            document.getElementById("user-icon").appendChild(usernameSpan);
+
+            // Kiểm tra vai trò của người dùng
+            if (storedRole === 'admin') {
+                document.querySelector('.admin-role').style.display = 'inline-block';
             }
         }
+    });
+
+    document.getElementById("logout").addEventListener("click", function(event) {
+        event.preventDefault();
+        localStorage.removeItem('username');
+        localStorage.removeItem('role');
+        window.location.href = '/the_coffee_house';
+    });
     </script>
 </body>
 

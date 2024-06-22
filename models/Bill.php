@@ -9,7 +9,7 @@ class Bill {
     public $total_item;
     public $money;
 
-    public function __construct($username, $tel, $address, $total_item, $money, $id = null) {
+    public function __construct($id = null, $username, $tel, $address, $total_item, $money) {
         $this->id = $id;
         $this->username = $username;
         $this->tel = $tel;

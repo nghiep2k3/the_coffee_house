@@ -42,9 +42,8 @@
     <div style="display: flex;justify-content: space-between;
     margin: 0 50px;">
         <div>
-            <!-- Form thanh toán -->
             <form action="/the_coffee_house/routers/products_router.php" method="POST">
-                <input type="hidden" name="action" value="checkout">
+                <input type="hidden" name="action" value="payments">
                 <div class="Label">
                     <label for="fullname">Họ và tên:</label>
                 </div>
@@ -59,6 +58,8 @@
                     <label for="address">Địa chỉ giao hàng:</label>
                 </div>
                 <input class="Inputs" type="text" id="address" name="address" required><br><br>
+                <input id="usernameInput" type="text" name="totalAmount" value="<?php echo $totalAmount?>">
+                <input id="usernameInput" type="text" name="totalQuantity" value="<?php echo $totalQuantity?>">
 
                 <button type="submit">Thanh toán</button>
             </form>
@@ -69,7 +70,7 @@
             <div style="max-height: 316px; width: 350px; overflow: scroll;">
                 <?php if (!empty($orders)): ?>
                 <?php foreach ($orders as $order): ?>
-                <div style="display: flex; align-items: center;">
+                <div style=" display: flex; align-items: center;">
                     <div style="width: 100px; margin-right: 15px;">
                         <img style="width: 100%;" src=" <?php echo $order['product_image']; ?>"
                             alt="<?php echo $order['product_name']; ?>">
@@ -78,7 +79,7 @@
                     <div>
                         <p>Tên sản phẩm: <?php echo $order['product_name']; ?></p>
                         <p>Số lượng: <?php echo $order['quantity']; ?></p>
-                        <p>Tổng tiền: 100.000 VNĐ</p>
+                        <p>Tổng tiền: <?php echo number_format($order['product_price'], 0, ',', '.'); ?> VNĐ</p>
                     </div>
                 </div>
 
