@@ -57,7 +57,7 @@
                 <li><a href=""></a></li>
                 <form action="/the_coffee_house/routers/router.php" method="get" style="display: inline;">
                     <input type="hidden" name="action" value="admin">
-                    <button class="button" type="submit" style="margin-top: 17px">Quản lý</button>
+                    <button class="button" id="admin-button" type="submit" style="display: none; margin-top: 17px">Quản lý</button>
                 </form>
             </ul>
         </div>
@@ -131,6 +131,24 @@
                 }
             }
         }
+        document.addEventListener('DOMContentLoaded', function() {
+            var storedUsername = localStorage.getItem('username');
+            var storedRole = localStorage.getItem('role');
+            if (storedUsername) {
+                document.getElementById("login-button").style.display = "none";
+                document.getElementById("register-button").style.display = "none";
+                document.getElementById("logout").style.display = "inline-block";
+                var usernameSpan = document.createElement("span");
+                usernameSpan.textContent = "Xin chào, " + storedUsername;
+                usernameSpan.style.fontSize = "14px";
+                document.getElementById("user-icon").appendChild(usernameSpan);
+
+                // Kiểm tra vai trò của người dùng
+                if (storedRole === 'admin') {
+                    document.querySelector('#admin-button').style.display = 'inline-block';
+                }
+            }
+        })
     </script>
 </body>
 

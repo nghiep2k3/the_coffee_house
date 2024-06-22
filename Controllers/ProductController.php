@@ -19,6 +19,11 @@ class ProductController {
         $categories = $this->categoryService->getAllCategories();
         require_once __DIR__ . '/../views/product_list.php';
     }
+    public function list_admin() {
+        $products = $this->productService->getAllProducts();
+        $categories = $this->categoryService->getAllCategories();
+        require_once __DIR__ . '/../views/admin.php';
+    }
 
     public function view($id) {
         $product = $this->productService->getProductById($id);

@@ -17,12 +17,7 @@ if ($method === 'GET') {
 
     switch ($action) {
         case 'product_list':
-            if ($categoryId) {
-                $ProductsController->listByCategory($categoryId);
-            } else {
-                $ProductsController->list();
-                $CategoriesController->getAllCategories();
-            }
+            $ProductsController->list_admin();
             break;
         default:
             break;

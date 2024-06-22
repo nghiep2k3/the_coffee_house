@@ -22,7 +22,7 @@
     <main>
         <section id="products">
             <h2>Quản lý sản phẩm</h2>
-            <button onclick="showProductForm()">Thêm sản phẩm mới</button>
+            <button name="action" value="product_list" onclick="showProductForm()">Thêm sản phẩm mới</button>
             <div id="product-form" style="display: none;">
                 <h3 id="product-form-title">Thêm sản phẩm</h3>
                 <form id="add-product-form" method="post" action="/the_coffee_house/routers/admin_router.php">
@@ -45,6 +45,10 @@
             </div>
         </section>
         <table>
+            <form action="/the_coffee_house/routers/admin_router.php" method="get">
+                <input type="hidden" name="action" value="product_list">
+                <button>Sản phẩm</button>
+            </form>
             <thead>
                 <tr>
                     <th>ID</th>
@@ -56,13 +60,13 @@
                 </tr>
             </thead>
             <tbody id="product-list">
-                <?php if(isset($products)) { foreach ($products as $product):?>
+            <?php if(isset($products)) { foreach ($products as $product):?>
                 <tr>
-                    <td><?php echo htmlspecialchars($product['id']); ?></td>
-                    <td><?php echo htmlspecialchars($product['name']); ?></td>
-                    <td><?php echo htmlspecialchars($product['unit_price']); ?></td>
-                    <td><?php echo htmlspecialchars($product['description']); ?></td>
-                    <td><img src="<?php echo htmlspecialchars($product['src_img']); ?>" alt="Product Image" width="50">
+                    <td><?php echo htmlspecialchars($product->id); ?></td>
+                    <td><?php echo htmlspecialchars($product->name); ?></td>
+                    <td><?php echo htmlspecialchars($product->unit_price); ?></td>
+                    <td><?php echo htmlspecialchars($product->description); ?></td>
+                    <td><img src="<?php echo htmlspecialchars($product->src_img); ?>" alt="Product Image" width="50">
                     </td>
                 </tr>
                 <?php endforeach; } ?>
